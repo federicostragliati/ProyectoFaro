@@ -10,15 +10,18 @@ public class DetalleCompra {
     private BigDecimal cantidad;
     private BigDecimal costoUnitario;
 
-    public DetalleCompra() {
-    }
+    private BigDecimal costoPorCantidad;
 
-    public DetalleCompra(int id, int idCompra, int idProducto, BigDecimal cantidad, BigDecimal costoUnitario) {
+    public DetalleCompra(int id, int idCompra, int idProducto, BigDecimal cantidad, BigDecimal costoUnitario, BigDecimal costoPorCantidad) {
         this.id = id;
         this.idCompra = idCompra;
         this.idProducto = idProducto;
         this.cantidad = cantidad;
         this.costoUnitario = costoUnitario;
+        this.costoPorCantidad = costoPorCantidad;
+    }
+
+    public DetalleCompra() {
     }
 
     public int getId() {
