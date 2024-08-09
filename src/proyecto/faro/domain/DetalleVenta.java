@@ -7,18 +7,24 @@ public class DetalleVenta {
     private int id;
     private int idVenta;
     private int idProducto;
+
+    private String detalle;
     private BigDecimal cantidad;
     private BigDecimal precioUnitario;
+
+    private BigDecimal precioPorCantidad;
 
     public DetalleVenta() {
     }
 
-    public DetalleVenta(int id, int idVenta, int idProducto, BigDecimal cantidad, BigDecimal precioUnitario) {
+    public DetalleVenta(int id, int idVenta, int idProducto, String detalle, BigDecimal cantidad, BigDecimal precioUnitario, BigDecimal precioPorCantidad) {
         this.id = id;
         this.idVenta = idVenta;
         this.idProducto = idProducto;
+        this.detalle = detalle;
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
+        this.precioPorCantidad = precioPorCantidad;
     }
 
     public int getId() {
@@ -45,6 +51,14 @@ public class DetalleVenta {
         this.idProducto = idProducto;
     }
 
+    public String getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(String detalle) {
+        this.detalle = detalle;
+    }
+
     public BigDecimal getCantidad() {
         return cantidad;
     }
@@ -61,4 +75,11 @@ public class DetalleVenta {
         this.precioUnitario = precioUnitario;
     }
 
+    public BigDecimal getPrecioPorCantidad() {
+        return precioPorCantidad;
+    }
+
+    public void setPrecioPorCantidad(BigDecimal precioPorCantidad) {
+        this.precioPorCantidad = precioPorCantidad;
+    }
 }

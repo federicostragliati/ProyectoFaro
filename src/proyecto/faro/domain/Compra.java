@@ -6,7 +6,7 @@ public class Compra {
 
     private int id;
     private int idProveedor;
-    private int cuitProveedor;
+    private String cuitProveedor;
     private int metodoDePagoPrimario;
     private BigDecimal montoDePagoPrimario;
 
@@ -21,7 +21,7 @@ public class Compra {
     public Compra() {
     }
 
-    public Compra(int id, int idProveedor, int cuitProveedor, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean entregada, boolean activo) {
+    public Compra(int id, int idProveedor, String cuitProveedor, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean entregada, boolean activo) {
         this.id = id;
         this.idProveedor = idProveedor;
         this.cuitProveedor = cuitProveedor;
@@ -51,11 +51,11 @@ public class Compra {
         this.idProveedor = idProveedor;
     }
 
-    public int getCuitProveedor() {
+    public String getCuitProveedor() {
         return cuitProveedor;
     }
 
-    public void setCuitProveedor(int cuitProveedor) {
+    public void setCuitProveedor(String cuitProveedor) {
         this.cuitProveedor = cuitProveedor;
     }
 

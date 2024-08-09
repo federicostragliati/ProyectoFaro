@@ -12,16 +12,16 @@ public class Remito {
     private int idCliente;
     private String nombreCliente;
 
-    private int cuitCliente;
-    private int nroFactura;
+    private String cuitCliente;
+    private String nroFactura;
     private int idProducto;
-    private int detalleProducto;
+    private String detalleProducto;
     private BigDecimal cantidadProducto;
 
     public Remito() {
     }
 
-    public Remito(int id, int linea, int idVenta, Date fechaEntrega, int idCliente, String nombreCliente, int cuitCliente, int nroFactura, int idProducto, int detalleProducto, BigDecimal cantidadProducto) {
+    public Remito(int id, int linea, int idVenta, Date fechaEntrega, int idCliente, String nombreCliente, String cuitCliente, String nroFactura, int idProducto, String detalleProducto, BigDecimal cantidadProducto) {
         this.id = id;
         this.linea = linea;
         this.idVenta = idVenta;
@@ -83,19 +83,19 @@ public class Remito {
         this.nombreCliente = nombreCliente;
     }
 
-    public int getCuitCliente() {
+    public String getCuitCliente() {
         return cuitCliente;
     }
 
-    public void setCuitCliente(int cuitCliente) {
+    public void setCuitCliente(String cuitCliente) {
         this.cuitCliente = cuitCliente;
     }
 
-    public int getNroFactura() {
+    public String getNroFactura() {
         return nroFactura;
     }
 
-    public void setNroFactura(int nroFactura) {
+    public void setNroFactura(String nroFactura) {
         this.nroFactura = nroFactura;
     }
 
@@ -107,11 +107,11 @@ public class Remito {
         this.idProducto = idProducto;
     }
 
-    public int getDetalleProducto() {
+    public String getDetalleProducto() {
         return detalleProducto;
     }
 
-    public void setDetalleProducto(int detalleProducto) {
+    public void setDetalleProducto(String detalleProducto) {
         this.detalleProducto = detalleProducto;
     }
 

@@ -1,5 +1,6 @@
 package proyecto.faro.domain;
 
+import javax.print.DocFlavor;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -8,23 +9,23 @@ public class Cheque {
     private int id;
     private int idTransaccion;
     private Date fechaRecepcion;
-    private int cuitEmisor;
+    private String cuitEmisor;
     private String nombreEmisor;
     private String bancoProcedencia;
-    private int nroCheque;
+    private String nroCheque;
     private BigDecimal  importe;
     private Date fechaCheque;
     private Date fechaCobro;
 
     private Destino destino;
-    private int cuitDestino;
+    private String cuitDestino;
     private boolean estado;
     private boolean activo; // verificar contra diseño de BBDD
 
     public Cheque() {
     }
 
-    public Cheque(int id, int idTransaccion, Date fechaRecepcion, int cuitEmisor, String nombreEmisor, String bancoProcedencia, int nroCheque, BigDecimal importe, Date fechaCheque, Date fechaCobro, Destino destino, int cuitDestino, boolean estado, boolean activo) {
+    public Cheque(int id, int idTransaccion, Date fechaRecepcion, String cuitEmisor, String nombreEmisor, String bancoProcedencia, String nroCheque, BigDecimal importe, Date fechaCheque, Date fechaCobro, Destino destino, String cuitDestino, boolean estado, boolean activo) {
         this.id = id;
         this.idTransaccion = idTransaccion;
         this.fechaRecepcion = fechaRecepcion;
@@ -65,11 +66,11 @@ public class Cheque {
         this.fechaRecepcion = fechaRecepcion;
     }
 
-    public int getCuitEmisor() {
+    public String getCuitEmisor() {
         return cuitEmisor;
     }
 
-    public void setCuitEmisor(int cuitEmisor) {
+    public void setCuitEmisor(String cuitEmisor) {
         this.cuitEmisor = cuitEmisor;
     }
 
@@ -89,11 +90,11 @@ public class Cheque {
         this.bancoProcedencia = bancoProcedencia;
     }
 
-    public int getNroCheque() {
+    public String getNroCheque() {
         return nroCheque;
     }
 
-    public void setNroCheque(int nroCheque) {
+    public void setNroCheque(String nroCheque) {
         this.nroCheque = nroCheque;
     }
 
@@ -129,11 +130,11 @@ public class Cheque {
         this.destino = destino;
     }
 
-    public int getCuitDestino() {
+    public String getCuitDestino() {
         return cuitDestino;
     }
 
-    public void setCuitDestino(int cuitDestino) {
+    public void setCuitDestino(String cuitDestino) {
         this.cuitDestino = cuitDestino;
     }
 

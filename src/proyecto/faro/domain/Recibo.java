@@ -10,7 +10,7 @@ public class Recibo {
     private Date fechaRecibo;
     private int idCliente;
     private String nombreCliente;
-    private int cuitCliente;
+    private String cuitCliente;
 
     private String textoDineroRecibido;
     private BigDecimal nroDineroRecibido;
@@ -25,7 +25,7 @@ public class Recibo {
     public Recibo() {
     }
 
-    public Recibo(int id, int idVenta, Date fechaRecibo, int idCliente, String nombreCliente, int cuitCliente, String textoDineroRecibido, BigDecimal nroDineroRecibido, Date fechaPago, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario) {
+    public Recibo(int id, int idVenta, Date fechaRecibo, int idCliente, String nombreCliente, String cuitCliente, String textoDineroRecibido, BigDecimal nroDineroRecibido, Date fechaPago, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario) {
         this.id = id;
         this.idVenta = idVenta;
         this.fechaRecibo = fechaRecibo;
@@ -81,11 +81,11 @@ public class Recibo {
         this.nombreCliente = nombreCliente;
     }
 
-    public int getCuitCliente() {
+    public String getCuitCliente() {
         return cuitCliente;
     }
 
-    public void setCuitCliente(int cuitCliente) {
+    public void setCuitCliente(String cuitCliente) {
         this.cuitCliente = cuitCliente;
     }
 

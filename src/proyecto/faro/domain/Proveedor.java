@@ -3,7 +3,7 @@ package proyecto.faro.domain;
 public class Proveedor {
 
     private int id;
-    private int cuit;
+    private String cuit;
 
     private String razonSocial;
     private String email;
@@ -15,7 +15,7 @@ public class Proveedor {
     public Proveedor() {
     }
 
-    public Proveedor(int id, int cuit, String razonSocial, String email, String telefono, String direccion, boolean activo) {
+    public Proveedor(int id, String cuit, String razonSocial, String email, String telefono, String direccion, boolean activo) {
         this.id = id;
         this.cuit = cuit;
         this.razonSocial = razonSocial;
@@ -33,11 +33,11 @@ public class Proveedor {
         this.id = id;
     }
 
-    public int getCuit() {
+    public String getCuit() {
         return cuit;
     }
 
-    public void setCuit(int cuit) {
+    public void setCuit(String cuit) {
         this.cuit = cuit;
     }
 

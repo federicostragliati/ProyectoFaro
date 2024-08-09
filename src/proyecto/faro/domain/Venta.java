@@ -7,7 +7,7 @@ public class Venta {
 
     private int id;
     private int IdCliente;
-    private int CuitCliente;
+    private String CuitCliente;
     private Date fechaVenta;
     private int metodoDePagoPrimario;
     private BigDecimal montoDePagoPrimario;
@@ -23,7 +23,7 @@ public class Venta {
     public Venta() {
     }
 
-    public Venta(int id, int idCliente, int cuitCliente, Date fechaVenta, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, boolean pagada, boolean completa, boolean entregada, BigDecimal montoFinal, boolean activo) {
+    public Venta(int id, int idCliente, String cuitCliente, Date fechaVenta, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, boolean pagada, boolean completa, boolean entregada, BigDecimal montoFinal, boolean activo) {
         this.id = id;
         IdCliente = idCliente;
         CuitCliente = cuitCliente;
@@ -55,11 +55,11 @@ public class Venta {
         IdCliente = idCliente;
     }
 
-    public int getCuitCliente() {
+    public String getCuitCliente() {
         return CuitCliente;
     }
 
-    public void setCuitCliente(int cuitCliente) {
+    public void setCuitCliente(String cuitCliente) {
         CuitCliente = cuitCliente;
     }
 
