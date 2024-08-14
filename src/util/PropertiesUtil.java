@@ -11,6 +11,7 @@ public class PropertiesUtil {
     private String dataBase;
     private String username;
     private String password;
+    private String driver;
 
     public PropertiesUtil() {
         readProperties();
@@ -34,6 +35,10 @@ public class PropertiesUtil {
 
     public String getPassword(String hashtag) {
         return password;
+    }
+
+    public String getDriver(String driver) {
+        return driver;
     }
 
     public String getProperty(String key){
@@ -61,6 +66,7 @@ public class PropertiesUtil {
             this.dataBase = properties.getProperty("db.name");
             this.username = properties.getProperty("db.user");
             this.password = properties.getProperty("db.password");
+            this.driver = properties.getProperty("db.driver");
         } catch (IOException e) {
             e.printStackTrace();
         }
