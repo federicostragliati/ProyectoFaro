@@ -2,8 +2,10 @@ package dominio;
 
 public class Cliente {
 
+    private static int contador = 0;
+
     private int id;
-    private int cuitCliente;
+    private String cuitCliente;
     private String nombre;
     private String email;
     private String telefono;
@@ -12,8 +14,8 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(int id, int cuitCliente, String nombre, String email, String telefono, boolean activo) {
-        this.id = id;
+    public Cliente( String cuitCliente, String nombre, String email, String telefono, boolean activo) {
+        this.id = contador++;
         this.cuitCliente = cuitCliente;
         this.nombre = nombre;
         this.email = email;
@@ -25,15 +27,11 @@ public class Cliente {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getCuitCliente() {
+    public String getCuitCliente() {
         return cuitCliente;
     }
 
-    public void setCuitCliente(int cuitCliente) {
+    public void setCuitCliente(String cuitCliente) {
         this.cuitCliente = cuitCliente;
     }
 

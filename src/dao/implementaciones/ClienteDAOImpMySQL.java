@@ -5,6 +5,8 @@ import dominio.Cliente;
 import shared.ConnectionSQL;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
@@ -20,18 +22,45 @@ public class ClienteDAOImpMySQL implements IClienteDAO {
 
     public ClienteDAOImpMySQL() {
         sql = new ConnectionSQL();
-        addSt = "insert into cliente (CUIT, Nombre, Email, Telefono, Activo) values (?,?,?,?,?)"; // unico correcto
-        getSt = "select * from Camiones where dominio = ?;";
-        updateSt = "update Camiones set marca = ?, modelo = ?, dominio = ?, capacidad = ?," +
-                "tanque = ?, consumo = ?  where idCamion = ?;";
-        deleteSt = "delete from Camiones where idCamion = ?;";
-        selectAllSt = "select * from Camiones";
+        addSt = "INSERT INTO `proyectofaro`.`cliente`\n" +
+                "(`ID Cliente`,\n" +
+                "`CUIT Cliente`,\n" +
+                "`Nombre`,\n" +
+                "`Email`,\n" +
+                "`Telefono`,\n" +
+                "`Activo`)\n" +
+                "VALUES (?,?,?,?,?,?)"; // unico correcto
+        getSt = "select * from cliente where idcliente = ?;";
+        updateSt = "update cliente set CUIT = ?, Nombre = ?, Email = ?, Telefono = ?, activo = ?  where idcliente = ?;";
+        // deleteSt = "delete from Cliente where idcliente = ?;";
+        selectAllSt = "select * from Cliente";
     }
 
     @Override
-    public boolean createCliente(Cliente c) throws SQLException, ClassNotFoundException, IOException {
-
-        return false;
+    public void addCliente(Cliente c) throws SQLException, ClassNotFoundException, IOException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        try {
+            con = sql.getConnection();
+            ps = con.prepareStatement(addSt);
+            ps.setInt(1, c.getId());
+            ps.setString(2, c.getCuitCliente());
+            ps.setString(3, c.getNombre());
+            ps.setString(4, c.getEmail());
+            ps.setString(5, c.getTelefono());
+            ps.setBoolean(6,c.isActivo());
+            ps.executeUpdate();
+            System.out.println("Cliente agregado exitosamente");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                ps.close();
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

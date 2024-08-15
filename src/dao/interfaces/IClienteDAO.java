@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IClienteDAO {
 
-    public boolean createCliente(Cliente c) throws SQLException, ClassNotFoundException, IOException; //prepare statement
+    public void addCliente(Cliente c) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public Cliente getCliente(int idCliente) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public List<Cliente> getClientes() throws SQLException, ClassNotFoundException, IOException; //statement
     public int updateCliente (Cliente c) throws SQLException, ClassNotFoundException, IOException; //prepare statement
