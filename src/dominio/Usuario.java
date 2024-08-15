@@ -1,5 +1,7 @@
 package dominio;
 
+import dominio.enums.TipoUsuario;
+
 public class Usuario {
 
     private int id;

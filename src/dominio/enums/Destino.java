@@ -1,4 +1,4 @@
-package dominio;
+package dominio.enums;
 
 public enum Destino {
 

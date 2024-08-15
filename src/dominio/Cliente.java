@@ -23,8 +23,21 @@ public class Cliente {
         this.activo = activo;
     }
 
+    public Cliente(int id, String cuitCliente, String nombre, String email, String telefono, boolean activo) {
+        this.id = id;
+        this.cuitCliente = cuitCliente;
+        this.nombre = nombre;
+        this.email = email;
+        this.telefono = telefono;
+        this.activo = activo;
+    }
+
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCuitCliente() {
@@ -65,5 +78,17 @@ public class Cliente {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", cuitCliente='" + cuitCliente + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", activo=" + activo +
+                '}';
     }
 }

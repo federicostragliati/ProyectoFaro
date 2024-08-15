@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface IUsuarioDAO {
 
-    public boolean createUsuario(Usuario u) throws SQLException, ClassNotFoundException, IOException; //prepare statement
+    public void createUsuario(Usuario u) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public Usuario getUsuario(int idUsuario) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public List<Usuario> getUsuarios() throws SQLException, ClassNotFoundException, IOException; //statement
-    public int updateUsuario (Usuario u) throws SQLException, ClassNotFoundException, IOException; //prepare statement
+    public void updateUsuario (Usuario u) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public boolean deleteUsuario(int idUsuario); //prepare statement
     
 }

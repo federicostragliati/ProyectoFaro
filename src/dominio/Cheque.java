@@ -1,5 +1,7 @@
 package dominio;
 
+import dominio.enums.Destino;
+
 import java.math.BigDecimal;
 import java.util.Date;
 

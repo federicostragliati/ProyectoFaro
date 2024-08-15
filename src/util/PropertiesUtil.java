@@ -37,7 +37,7 @@ public class PropertiesUtil {
         return password;
     }
 
-    public String getDriver(String driver) {
+    public String getDriver() {
         return driver;
     }
 
