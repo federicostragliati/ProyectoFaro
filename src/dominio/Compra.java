@@ -1,12 +1,14 @@
 package dominio;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class Compra {
 
     private int id;
     private int idProveedor;
     private String cuitProveedor;
+    private Date fechaCompra;
     private int metodoDePagoPrimario;
     private BigDecimal montoDePagoPrimario;
 
@@ -21,10 +23,11 @@ public class Compra {
     public Compra() {
     }
 
-    public Compra(int id, int idProveedor, String cuitProveedor, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean entregada, boolean activo) {
+    public Compra(int id, int idProveedor, String cuitProveedor, Date fechaCompra, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean entregada, boolean activo) {
         this.id = id;
         this.idProveedor = idProveedor;
         this.cuitProveedor = cuitProveedor;
+        this.fechaCompra = fechaCompra;
         this.metodoDePagoPrimario = metodoDePagoPrimario;
         this.montoDePagoPrimario = montoDePagoPrimario;
         this.metodoDePagoSecundario = metodoDePagoSecundario;
@@ -57,6 +60,14 @@ public class Compra {
 
     public void setCuitProveedor(String cuitProveedor) {
         this.cuitProveedor = cuitProveedor;
+    }
+
+    public Date getFechaCompra() {
+        return fechaCompra;
+    }
+
+    public void setFechaCompra(Date fechaCompra) {
+        this.fechaCompra = fechaCompra;
     }
 
     public int getMetodoDePagoPrimario() {

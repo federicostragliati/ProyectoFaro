@@ -915,7 +915,7 @@
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="291" parent="1" name="proyectofaro">
-      <LastIntrospectionLocalTimestamp>2024-08-15.19:08:40</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-08-15.20:16:40</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
     <schema id="292" parent="1" name="sakila">
@@ -964,11 +964,11 @@
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb3_general_ci</CollationName>
     </table>
-    <table id="304" parent="291" name="detalle compra">
+    <table id="304" parent="291" name="detallecompra">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb3_general_ci</CollationName>
     </table>
-    <table id="305" parent="291" name="detalle venta">
+    <table id="305" parent="291" name="detalleventa">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb3_general_ci</CollationName>
     </table>
@@ -1132,41 +1132,41 @@
     <key id="343" parent="302" name="CUIT Cliente_UNIQUE">
       <UnderlyingIndexName>CUIT Cliente_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="344" parent="303" name="ID Compra">
+    <column id="344" parent="303" name="ID">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="345" parent="303" name="ID Proveedor">
+    <column id="345" parent="303" name="IDProveedor">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="346" parent="303" name="CUIT Proveedor">
+    <column id="346" parent="303" name="CUITProveedor">
       <Position>3</Position>
       <StoredType>varchar(13)|0s</StoredType>
     </column>
-    <column id="347" parent="303" name="Fecha de Compra">
+    <column id="347" parent="303" name="FechaCompra">
       <Position>4</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="348" parent="303" name="Metodo de Pago Primario">
+    <column id="348" parent="303" name="MetodoPagoPrimario">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="349" parent="303" name="Monto de Pago Primario">
+    <column id="349" parent="303" name="MontoPagoPrimario">
       <Position>6</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <column id="350" parent="303" name="Metodo de Pago Secundario">
+    <column id="350" parent="303" name="MetodoPagoSecundario">
       <Position>7</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="351" parent="303" name="Monto de Pago Secundario">
+    <column id="351" parent="303" name="MontoPagoSecundario">
       <Position>8</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <column id="352" parent="303" name="Monto Final">
+    <column id="352" parent="303" name="MontoFinal">
       <Position>9</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
@@ -1183,12 +1183,12 @@
       <StoredType>tinyint|0s</StoredType>
     </column>
     <index id="356" parent="303" name="ID Compra_UNIQUE">
-      <ColNames>ID Compra</ColNames>
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
     <index id="357" parent="303" name="PRIMARY">
-      <ColNames>ID Compra</ColNames>
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
@@ -1200,21 +1200,21 @@
     <key id="359" parent="303" name="ID Compra_UNIQUE">
       <UnderlyingIndexName>ID Compra_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="360" parent="304" name="ID DetalleCompra">
+    <column id="360" parent="304" name="ID">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="361" parent="304" name="ID Compra">
+    <column id="361" parent="304" name="IDCompra">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="362" parent="304" name="ID Producto">
+    <column id="362" parent="304" name="IDProducto">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="363" parent="304" name="Detalle Producto">
+    <column id="363" parent="304" name="DetalleProducto">
       <Position>4</Position>
       <StoredType>varchar(99)|0s</StoredType>
     </column>
@@ -1222,7 +1222,7 @@
       <Position>5</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <column id="365" parent="304" name="Costo Unitario">
+    <column id="365" parent="304" name="CostoUnitario">
       <Position>6</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
@@ -1231,21 +1231,21 @@
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
     <index id="367" parent="304" name="ID DetalleCompra_UNIQUE">
-      <ColNames>ID DetalleCompra</ColNames>
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
     <index id="368" parent="304" name="PRIMARY">
-      <ColNames>ID DetalleCompra</ColNames>
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
     <index id="369" parent="304" name="ID Compra_idx">
-      <ColNames>ID Compra</ColNames>
+      <ColNames>IDCompra</ColNames>
       <Type>btree</Type>
     </index>
     <index id="370" parent="304" name="Producto_idx">
-      <ColNames>ID Producto</ColNames>
+      <ColNames>IDProducto</ColNames>
       <Type>btree</Type>
     </index>
     <key id="371" parent="304" name="PRIMARY">
@@ -1256,21 +1256,21 @@
     <key id="372" parent="304" name="ID DetalleCompra_UNIQUE">
       <UnderlyingIndexName>ID DetalleCompra_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="373" parent="305" name="ID DetalleVenta">
+    <column id="373" parent="305" name="ID">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="374" parent="305" name="ID Venta">
+    <column id="374" parent="305" name="IDVenta">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="375" parent="305" name="ID Producto">
+    <column id="375" parent="305" name="IDProducto">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="376" parent="305" name="Detalle Producto">
+    <column id="376" parent="305" name="DetalleProducto">
       <Position>4</Position>
       <StoredType>varchar(99)|0s</StoredType>
     </column>
@@ -1278,7 +1278,7 @@
       <Position>5</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <column id="378" parent="305" name="Precio Unitario">
+    <column id="378" parent="305" name="PrecioUnitario">
       <Position>6</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
@@ -1286,485 +1286,475 @@
       <Position>7</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <foreign-key id="380" parent="305" name="ID Venta">
-      <ColNames>ID Venta</ColNames>
-      <RefColNames>ID Venta</RefColNames>
-      <RefTableName>ventas</RefTableName>
-    </foreign-key>
-    <foreign-key id="381" parent="305" name="Producto">
-      <ColNames>ID Producto</ColNames>
-      <RefColNames>ID</RefColNames>
-      <RefTableName>productos</RefTableName>
-    </foreign-key>
-    <index id="382" parent="305" name="ID DetalleVenta_UNIQUE">
-      <ColNames>ID DetalleVenta</ColNames>
+    <index id="380" parent="305" name="ID DetalleVenta_UNIQUE">
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="383" parent="305" name="PRIMARY">
-      <ColNames>ID DetalleVenta</ColNames>
+    <index id="381" parent="305" name="PRIMARY">
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="384" parent="305" name="ID Venta_idx">
-      <ColNames>ID Venta</ColNames>
+    <index id="382" parent="305" name="ID Venta_idx">
+      <ColNames>IDVenta</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="385" parent="305" name="Producto_idx">
-      <ColNames>ID Producto</ColNames>
+    <index id="383" parent="305" name="Producto_idx">
+      <ColNames>IDProducto</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="386" parent="305" name="PRIMARY">
+    <key id="384" parent="305" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="387" parent="305" name="ID DetalleVenta_UNIQUE">
+    <key id="385" parent="305" name="ID DetalleVenta_UNIQUE">
       <UnderlyingIndexName>ID DetalleVenta_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="388" parent="306" name="ID Metodo de Pago">
+    <column id="386" parent="306" name="ID Metodo de Pago">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="389" parent="306" name="Nombre">
+    <column id="387" parent="306" name="Nombre">
       <Position>2</Position>
       <StoredType>varchar(20)|0s</StoredType>
     </column>
-    <column id="390" parent="306" name="Activo">
+    <column id="388" parent="306" name="Activo">
       <DefaultExpression>1</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>tinyint|0s</StoredType>
     </column>
-    <index id="391" parent="306" name="ID Metodo de Pago_UNIQUE">
+    <index id="389" parent="306" name="ID Metodo de Pago_UNIQUE">
       <ColNames>ID Metodo de Pago</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="392" parent="306" name="PRIMARY">
+    <index id="390" parent="306" name="PRIMARY">
       <ColNames>ID Metodo de Pago</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="393" parent="306" name="PRIMARY">
+    <key id="391" parent="306" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="394" parent="306" name="ID Metodo de Pago_UNIQUE">
+    <key id="392" parent="306" name="ID Metodo de Pago_UNIQUE">
       <UnderlyingIndexName>ID Metodo de Pago_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="395" parent="307" name="ID">
+    <column id="393" parent="307" name="ID">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="396" parent="307" name="Detalle">
+    <column id="394" parent="307" name="Detalle">
       <Position>2</Position>
       <StoredType>varchar(99)|0s</StoredType>
     </column>
-    <column id="397" parent="307" name="Cantidad">
+    <column id="395" parent="307" name="Cantidad">
       <Position>3</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <column id="398" parent="307" name="PrecioUnitario">
+    <column id="396" parent="307" name="PrecioUnitario">
       <Position>4</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <column id="399" parent="307" name="UnidadVenta">
+    <column id="397" parent="307" name="UnidadVenta">
       <DefaultExpression>&apos;UN&apos;</DefaultExpression>
       <Position>5</Position>
       <StoredType>enum(&apos;UN&apos;, &apos;KG&apos;)|0e</StoredType>
     </column>
-    <column id="400" parent="307" name="Activo">
+    <column id="398" parent="307" name="Activo">
       <Position>6</Position>
       <StoredType>tinyint|0s</StoredType>
     </column>
-    <index id="401" parent="307" name="ID Producto_UNIQUE">
+    <index id="399" parent="307" name="ID Producto_UNIQUE">
       <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="402" parent="307" name="PRIMARY">
+    <index id="400" parent="307" name="PRIMARY">
       <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="403" parent="307" name="PRIMARY">
+    <key id="401" parent="307" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="404" parent="307" name="ID Producto_UNIQUE">
+    <key id="402" parent="307" name="ID Producto_UNIQUE">
       <UnderlyingIndexName>ID Producto_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="405" parent="308" name="ID Proveedor">
+    <column id="403" parent="308" name="ID">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="406" parent="308" name="CUIT">
+    <column id="404" parent="308" name="CUIT">
       <Position>2</Position>
       <StoredType>varchar(13)|0s</StoredType>
     </column>
-    <column id="407" parent="308" name="Razon Social">
+    <column id="405" parent="308" name="RazonSocial">
       <Position>3</Position>
       <StoredType>varchar(45)|0s</StoredType>
     </column>
-    <column id="408" parent="308" name="Email">
+    <column id="406" parent="308" name="Email">
       <Position>4</Position>
       <StoredType>varchar(45)|0s</StoredType>
     </column>
-    <column id="409" parent="308" name="Telefono">
+    <column id="407" parent="308" name="Telefono">
       <Position>5</Position>
       <StoredType>varchar(45)|0s</StoredType>
     </column>
-    <column id="410" parent="308" name="Direccion">
+    <column id="408" parent="308" name="Direccion">
       <Position>6</Position>
       <StoredType>varchar(45)|0s</StoredType>
     </column>
-    <column id="411" parent="308" name="Activo">
+    <column id="409" parent="308" name="Activo">
       <Position>7</Position>
       <StoredType>tinyint|0s</StoredType>
     </column>
-    <index id="412" parent="308" name="ID Proveedor_UNIQUE">
-      <ColNames>ID Proveedor</ColNames>
+    <index id="410" parent="308" name="ID Proveedor_UNIQUE">
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="413" parent="308" name="PRIMARY">
-      <ColNames>ID Proveedor</ColNames>
+    <index id="411" parent="308" name="PRIMARY">
+      <ColNames>ID</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="414" parent="308" name="CUIT_UNIQUE">
+    <index id="412" parent="308" name="CUIT_UNIQUE">
       <ColNames>CUIT</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="415" parent="308" name="PRIMARY">
+    <key id="413" parent="308" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="416" parent="308" name="ID Proveedor_UNIQUE">
+    <key id="414" parent="308" name="ID Proveedor_UNIQUE">
       <UnderlyingIndexName>ID Proveedor_UNIQUE</UnderlyingIndexName>
     </key>
-    <key id="417" parent="308" name="CUIT_UNIQUE">
+    <key id="415" parent="308" name="CUIT_UNIQUE">
       <UnderlyingIndexName>CUIT_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="418" parent="309" name="ID Recibo">
+    <column id="416" parent="309" name="ID Recibo">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="419" parent="309" name="ID Venta">
+    <column id="417" parent="309" name="ID Venta">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="420" parent="309" name="Fecha Recibo">
+    <column id="418" parent="309" name="Fecha Recibo">
       <Position>3</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="421" parent="309" name="ID Cliente">
+    <column id="419" parent="309" name="ID Cliente">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="422" parent="309" name="Nombre Cliente">
+    <column id="420" parent="309" name="Nombre Cliente">
       <Position>5</Position>
       <StoredType>varchar(45)|0s</StoredType>
     </column>
-    <column id="423" parent="309" name="CUIT Cliente">
+    <column id="421" parent="309" name="CUIT Cliente">
       <Position>6</Position>
       <StoredType>varchar(13)|0s</StoredType>
     </column>
-    <column id="424" parent="309" name="Dinero Recibido (Texto)">
+    <column id="422" parent="309" name="Dinero Recibido (Texto)">
       <Position>7</Position>
       <StoredType>varchar(65)|0s</StoredType>
     </column>
-    <column id="425" parent="309" name="Dinero Recibido (Numero)">
+    <column id="423" parent="309" name="Dinero Recibido (Numero)">
       <Position>8</Position>
       <StoredType>varchar(65)|0s</StoredType>
     </column>
-    <column id="426" parent="309" name="Fecha de Pago">
+    <column id="424" parent="309" name="Fecha de Pago">
       <Position>9</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="427" parent="309" name="N° Factura">
+    <column id="425" parent="309" name="N° Factura">
       <Position>10</Position>
       <StoredType>varchar(30)|0s</StoredType>
     </column>
-    <column id="428" parent="309" name="ID Metodo de Pago Primario">
+    <column id="426" parent="309" name="ID Metodo de Pago Primario">
       <Position>11</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="429" parent="309" name="Monto de Pago Primario">
+    <column id="427" parent="309" name="Monto de Pago Primario">
       <Position>12</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <column id="430" parent="309" name="ID Metodo de Pago Secundario">
+    <column id="428" parent="309" name="ID Metodo de Pago Secundario">
       <Position>13</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="431" parent="309" name="Monto de Pago Secundario">
+    <column id="429" parent="309" name="Monto de Pago Secundario">
       <Position>14</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <index id="432" parent="309" name="ID Recibo_UNIQUE">
+    <index id="430" parent="309" name="ID Recibo_UNIQUE">
       <ColNames>ID Recibo</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="433" parent="309" name="PRIMARY">
+    <index id="431" parent="309" name="PRIMARY">
       <ColNames>ID Recibo</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="434" parent="309" name="N° Factura_UNIQUE">
+    <index id="432" parent="309" name="N° Factura_UNIQUE">
       <ColNames>N° Factura</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="435" parent="309" name="PRIMARY">
+    <key id="433" parent="309" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="436" parent="309" name="ID Recibo_UNIQUE">
+    <key id="434" parent="309" name="ID Recibo_UNIQUE">
       <UnderlyingIndexName>ID Recibo_UNIQUE</UnderlyingIndexName>
     </key>
-    <key id="437" parent="309" name="N° Factura_UNIQUE">
+    <key id="435" parent="309" name="N° Factura_UNIQUE">
       <UnderlyingIndexName>N° Factura_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="438" parent="310" name="ID Remito">
+    <column id="436" parent="310" name="ID Remito">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="439" parent="310" name="N° de Linea">
+    <column id="437" parent="310" name="N° de Linea">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="440" parent="310" name="ID Venta">
+    <column id="438" parent="310" name="ID Venta">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="441" parent="310" name="Fecha Entrega">
+    <column id="439" parent="310" name="Fecha Entrega">
       <Position>4</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="442" parent="310" name="ID Cliente">
+    <column id="440" parent="310" name="ID Cliente">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="443" parent="310" name="Nombre Cliente">
+    <column id="441" parent="310" name="Nombre Cliente">
       <Position>6</Position>
       <StoredType>varchar(45)|0s</StoredType>
     </column>
-    <column id="444" parent="310" name="CUIT Cliente">
+    <column id="442" parent="310" name="CUIT Cliente">
       <Position>7</Position>
       <StoredType>varchar(13)|0s</StoredType>
     </column>
-    <column id="445" parent="310" name="N° Factura">
+    <column id="443" parent="310" name="N° Factura">
       <Position>8</Position>
       <StoredType>varchar(30)|0s</StoredType>
     </column>
-    <column id="446" parent="310" name="ID Producto">
+    <column id="444" parent="310" name="ID Producto">
       <Position>9</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="447" parent="310" name="Cantidad">
+    <column id="445" parent="310" name="Cantidad">
       <Position>10</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <index id="448" parent="310" name="ID Remito_UNIQUE">
+    <index id="446" parent="310" name="ID Remito_UNIQUE">
       <ColNames>ID Remito</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="449" parent="310" name="PRIMARY">
+    <index id="447" parent="310" name="PRIMARY">
       <ColNames>ID Remito</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="450" parent="310" name="PRIMARY">
+    <key id="448" parent="310" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="451" parent="310" name="ID Remito_UNIQUE">
+    <key id="449" parent="310" name="ID Remito_UNIQUE">
       <UnderlyingIndexName>ID Remito_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="452" parent="311" name="idUsuarios">
+    <column id="450" parent="311" name="idUsuarios">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="453" parent="311" name="Nombre de Usuario">
+    <column id="451" parent="311" name="Nombre de Usuario">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>varchar(45)|0s</StoredType>
     </column>
-    <column id="454" parent="311" name="Nombre">
+    <column id="452" parent="311" name="Nombre">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>varchar(45)|0s</StoredType>
     </column>
-    <column id="455" parent="311" name="Contraseña">
+    <column id="453" parent="311" name="Contraseña">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>varchar(45)|0s</StoredType>
     </column>
-    <column id="456" parent="311" name="Tipo de Usuario">
+    <column id="454" parent="311" name="Tipo de Usuario">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>enum(&apos;Admin&apos;, &apos;Ventas&apos;)|0e</StoredType>
     </column>
-    <column id="457" parent="311" name="Activo">
+    <column id="455" parent="311" name="Activo">
       <Position>6</Position>
       <StoredType>tinyint|0s</StoredType>
     </column>
-    <index id="458" parent="311" name="PRIMARY">
+    <index id="456" parent="311" name="PRIMARY">
       <ColNames>idUsuarios</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="459" parent="311" name="idUsuarios_UNIQUE">
+    <index id="457" parent="311" name="idUsuarios_UNIQUE">
       <ColNames>idUsuarios</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="460" parent="311" name="Nombre de Usuario_UNIQUE">
+    <index id="458" parent="311" name="Nombre de Usuario_UNIQUE">
       <ColNames>Nombre de Usuario</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="461" parent="311" name="PRIMARY">
+    <key id="459" parent="311" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="462" parent="311" name="idUsuarios_UNIQUE">
+    <key id="460" parent="311" name="idUsuarios_UNIQUE">
       <UnderlyingIndexName>idUsuarios_UNIQUE</UnderlyingIndexName>
     </key>
-    <key id="463" parent="311" name="Nombre de Usuario_UNIQUE">
+    <key id="461" parent="311" name="Nombre de Usuario_UNIQUE">
       <UnderlyingIndexName>Nombre de Usuario_UNIQUE</UnderlyingIndexName>
     </key>
-    <column id="464" parent="312" name="ID Venta">
+    <column id="462" parent="312" name="ID Venta">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="465" parent="312" name="ID Cliente">
+    <column id="463" parent="312" name="ID Cliente">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="466" parent="312" name="CUIT Cliente">
+    <column id="464" parent="312" name="CUIT Cliente">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>varchar(13)|0s</StoredType>
     </column>
-    <column id="467" parent="312" name="Fecha Venta">
+    <column id="465" parent="312" name="Fecha Venta">
       <Position>4</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="468" parent="312" name="Descuentos">
+    <column id="466" parent="312" name="Descuentos">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="469" parent="312" name="Metodo de Pago Primario">
+    <column id="467" parent="312" name="Metodo de Pago Primario">
       <Position>6</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="470" parent="312" name="Monto de Pago Primario">
+    <column id="468" parent="312" name="Monto de Pago Primario">
       <Position>7</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <column id="471" parent="312" name="Metodo de Pago Secundario">
+    <column id="469" parent="312" name="Metodo de Pago Secundario">
       <Position>8</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="472" parent="312" name="Monto de Pago Secundario">
+    <column id="470" parent="312" name="Monto de Pago Secundario">
       <Position>9</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <column id="473" parent="312" name="Monto Final">
+    <column id="471" parent="312" name="Monto Final">
       <Position>10</Position>
       <StoredType>decimal(65,2 digit)|0s</StoredType>
     </column>
-    <column id="474" parent="312" name="Pagado">
+    <column id="472" parent="312" name="Pagado">
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>11</Position>
       <StoredType>tinyint|0s</StoredType>
     </column>
-    <column id="475" parent="312" name="Completa">
+    <column id="473" parent="312" name="Completa">
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>12</Position>
       <StoredType>tinyint|0s</StoredType>
     </column>
-    <column id="476" parent="312" name="Entregada">
+    <column id="474" parent="312" name="Entregada">
       <DefaultExpression>0</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>13</Position>
       <StoredType>tinyint|0s</StoredType>
     </column>
-    <column id="477" parent="312" name="Activo">
+    <column id="475" parent="312" name="Activo">
       <Position>14</Position>
       <StoredType>tinyint|0s</StoredType>
     </column>
-    <foreign-key id="478" parent="312" name="ID Cliente">
+    <foreign-key id="476" parent="312" name="ID Cliente">
       <ColNames>ID Cliente</ColNames>
       <RefColNames>ID</RefColNames>
       <RefTableName>clientes</RefTableName>
     </foreign-key>
-    <foreign-key id="479" parent="312" name="Metodo de Pago Primario">
+    <foreign-key id="477" parent="312" name="Metodo de Pago Primario">
       <ColNames>Metodo de Pago Primario</ColNames>
       <RefColNames>ID Metodo de Pago</RefColNames>
       <RefTableName>metodos de pago</RefTableName>
     </foreign-key>
-    <foreign-key id="480" parent="312" name="Metodo de Pago Secundario">
+    <foreign-key id="478" parent="312" name="Metodo de Pago Secundario">
       <ColNames>Metodo de Pago Secundario</ColNames>
       <RefColNames>ID Metodo de Pago</RefColNames>
       <RefTableName>metodos de pago</RefTableName>
     </foreign-key>
-    <index id="481" parent="312" name="ID_UNIQUE">
+    <index id="479" parent="312" name="ID_UNIQUE">
       <ColNames>ID Venta</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="482" parent="312" name="PRIMARY">
+    <index id="480" parent="312" name="PRIMARY">
       <ColNames>ID Venta</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="483" parent="312" name="ID Cliente_idx">
+    <index id="481" parent="312" name="ID Cliente_idx">
       <ColNames>ID Cliente</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="484" parent="312" name="Metodo de Pago Primario_idx">
+    <index id="482" parent="312" name="Metodo de Pago Primario_idx">
       <ColNames>Metodo de Pago Primario</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="485" parent="312" name="Metodo de Pago Secundario_idx">
+    <index id="483" parent="312" name="Metodo de Pago Secundario_idx">
       <ColNames>Metodo de Pago Secundario</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="486" parent="312" name="PRIMARY">
+    <key id="484" parent="312" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="487" parent="312" name="ID_UNIQUE">
+    <key id="485" parent="312" name="ID_UNIQUE">
       <UnderlyingIndexName>ID_UNIQUE</UnderlyingIndexName>
     </key>
   </database-model>
