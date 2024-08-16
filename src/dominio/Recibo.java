@@ -16,16 +16,19 @@ public class Recibo {
     private BigDecimal nroDineroRecibido;
 
     private Date fechaPago;
+    private String factura;
     private int metodoDePagoPrimario;
     private BigDecimal montoDePagoPrimario;
 
     private int metodoDePagoSecundario;
     private BigDecimal montoDePagoSecundario;
 
+    private BigDecimal montoFinal;
+
     public Recibo() {
     }
 
-    public Recibo(int id, int idVenta, Date fechaRecibo, int idCliente, String nombreCliente, String cuitCliente, String textoDineroRecibido, BigDecimal nroDineroRecibido, Date fechaPago, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario) {
+    public Recibo(int id, int idVenta, Date fechaRecibo, int idCliente, String nombreCliente, String cuitCliente, String textoDineroRecibido, BigDecimal nroDineroRecibido, Date fechaPago, String factura, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal) {
         this.id = id;
         this.idVenta = idVenta;
         this.fechaRecibo = fechaRecibo;
@@ -35,10 +38,12 @@ public class Recibo {
         this.textoDineroRecibido = textoDineroRecibido;
         this.nroDineroRecibido = nroDineroRecibido;
         this.fechaPago = fechaPago;
+        this.factura = factura;
         this.metodoDePagoPrimario = metodoDePagoPrimario;
         this.montoDePagoPrimario = montoDePagoPrimario;
         this.metodoDePagoSecundario = metodoDePagoSecundario;
         this.montoDePagoSecundario = montoDePagoSecundario;
+        this.montoFinal = montoFinal;
     }
 
     public int getId() {
@@ -113,6 +118,14 @@ public class Recibo {
         this.fechaPago = fechaPago;
     }
 
+    public String getFactura() {
+        return factura;
+    }
+
+    public void setFactura(String factura) {
+        this.factura = factura;
+    }
+
     public int getMetodoDePagoPrimario() {
         return metodoDePagoPrimario;
     }
@@ -143,5 +156,13 @@ public class Recibo {
 
     public void setMontoDePagoSecundario(BigDecimal montoDePagoSecundario) {
         this.montoDePagoSecundario = montoDePagoSecundario;
+    }
+
+    public BigDecimal getMontoFinal() {
+        return montoFinal;
+    }
+
+    public void setMontoFinal(BigDecimal montoFinal) {
+        this.montoFinal = montoFinal;
     }
 }

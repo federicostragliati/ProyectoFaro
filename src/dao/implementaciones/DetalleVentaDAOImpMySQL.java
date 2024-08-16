@@ -1,7 +1,7 @@
 package dao.implementaciones;
 
-import dao.interfaces.IDetalleCompraDAO;
-import dominio.DetalleCompra;
+import dao.interfaces.IDetalleVentaDAO;
+import dominio.DetalleVenta;
 import shared.ConnectionSQL;
 
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetalleCompraDAOImpMySQL implements IDetalleCompraDAO {
+public class DetalleVentaDAOImpMySQL implements IDetalleVentaDAO {
 
     private ConnectionSQL sql;
     private String addSt;
@@ -21,29 +21,29 @@ public class DetalleCompraDAOImpMySQL implements IDetalleCompraDAO {
     private String updateSt;
     private String selectAllSt;
 
-    public DetalleCompraDAOImpMySQL() {
+    public DetalleVentaDAOImpMySQL() {
         sql = new ConnectionSQL();
-        addSt = "INSERT INTO detallecompra (IDCompra, IDProducto, DetalleProducto, Cantidad, CostoUnitario, CostoPorCantidad) VALUES (?,?,?,?,?,?);";
-        getSt = "SELECT * FROM detallecompra WHERE ID = ?;";
-        updateSt = "UPDATE detallecompra SET IDCompra = ?, IDProducto = ?, DetalleProducto = ?, Cantidad = ?, CostoUnitario = ?, CostoPorCantidad = ? WHERE ID = ?;";
-        selectAllSt = "SELECT * FROM detallecompra;";
+        addSt = "INSERT INTO detalleventa (IDVenta, IDProducto, DetalleProducto, Cantidad, PrecioUnitario, PrecioPorCantidad) VALUES (?, ?, ?, ?, ?, ?);";
+        getSt = "SELECT * FROM detalleventa WHERE ID = ?;";
+        updateSt = "UPDATE detalleventa SET IDVenta = ?, IDProducto = ?, DetalleProducto = ?, Cantidad = ?, PrecioUnitario = ?, PrecioPorCantidad = ? WHERE ID = ?;";
+        selectAllSt = "SELECT * FROM detalleventa;";
     }
 
     @Override
-    public void createDetalleCompra(DetalleCompra d) throws SQLException, ClassNotFoundException, IOException {
+    public void createDetalleVenta(DetalleVenta dv) throws SQLException, ClassNotFoundException, IOException {
         Connection con = null;
         PreparedStatement st = null;
         try {
             con = sql.getConnection();
             st = con.prepareStatement(addSt);
-            st.setInt(1, d.getIdCompra());
-            st.setInt(2, d.getIdProducto());
-            st.setString(3, d.getDetalle());
-            st.setBigDecimal(4, d.getCantidad());
-            st.setBigDecimal(5, d.getCostoUnitario());
-            st.setBigDecimal(6, d.getCostoPorCantidad());
+            st.setInt(1, dv.getIdVenta());
+            st.setInt(2, dv.getIdProducto());
+            st.setString(3, dv.getDetalle());
+            st.setBigDecimal(4, dv.getCantidad());
+            st.setBigDecimal(5, dv.getPrecioUnitario());
+            st.setBigDecimal(6, dv.getPrecioPorCantidad());
             st.executeUpdate();
-            System.out.println("Detalle de compra agregado exitosamente");
+            System.out.println("Detalle de venta agregado exitosamente");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -57,25 +57,25 @@ public class DetalleCompraDAOImpMySQL implements IDetalleCompraDAO {
     }
 
     @Override
-    public DetalleCompra getDetalleCompra(int idDetalleCompra) throws SQLException, ClassNotFoundException, IOException {
+    public DetalleVenta getDetalleVenta(int idDetalleVenta) throws SQLException, ClassNotFoundException, IOException {
         Connection con = null;
         PreparedStatement st = null;
         try {
             con = sql.getConnection();
             st = con.prepareStatement(getSt);
-            st.setInt(1, idDetalleCompra);
+            st.setInt(1, idDetalleVenta);
             ResultSet resultSet = st.executeQuery();
             if (resultSet.next()) {
-                return new DetalleCompra(
+                return new DetalleVenta(
                         resultSet.getInt("ID"),
-                        resultSet.getInt("IDCompra"),
+                        resultSet.getInt("IDVenta"),
                         resultSet.getInt("IDProducto"),
                         resultSet.getString("DetalleProducto"),
                         resultSet.getBigDecimal("Cantidad"),
-                        resultSet.getBigDecimal("CostoUnitario"),
-                        resultSet.getBigDecimal("CostoPorCantidad"));
+                        resultSet.getBigDecimal("PrecioUnitario"),
+                        resultSet.getBigDecimal("PrecioPorCantidad"));
             } else {
-                System.out.println("No se encontró ningún detalle de compra con el ID: " + idDetalleCompra);
+                System.out.println("No se encontró ningún detalle de venta con el ID: " + idDetalleVenta);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -91,23 +91,23 @@ public class DetalleCompraDAOImpMySQL implements IDetalleCompraDAO {
     }
 
     @Override
-    public List<DetalleCompra> getDetalleCompras() throws SQLException, ClassNotFoundException, IOException {
+    public List<DetalleVenta> getDetalleVentas() throws SQLException, ClassNotFoundException, IOException {
         Connection con = null;
         PreparedStatement st = null;
-        List<DetalleCompra> detallesCompra = new ArrayList<>();
+        List<DetalleVenta> detalles = new ArrayList<>();
         try {
             con = sql.getConnection();
             st = con.prepareStatement(selectAllSt);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                detallesCompra.add(new DetalleCompra(
+                detalles.add(new DetalleVenta(
                         rs.getInt("ID"),
-                        rs.getInt("IDCompra"),
+                        rs.getInt("IDVenta"),
                         rs.getInt("IDProducto"),
                         rs.getString("DetalleProducto"),
                         rs.getBigDecimal("Cantidad"),
-                        rs.getBigDecimal("CostoUnitario"),
-                        rs.getBigDecimal("CostoPorCantidad")));
+                        rs.getBigDecimal("PrecioUnitario"),
+                        rs.getBigDecimal("PrecioPorCantidad")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -120,26 +120,25 @@ public class DetalleCompraDAOImpMySQL implements IDetalleCompraDAO {
                 e.printStackTrace();
             }
         }
-        return detallesCompra;
+        return detalles;
     }
 
-
     @Override
-    public void updateDetalleCompra(DetalleCompra d) throws SQLException, ClassNotFoundException, IOException {
+    public void updateDetalleVenta(DetalleVenta dv) throws SQLException, ClassNotFoundException, IOException {
         Connection con = null;
         PreparedStatement st = null;
         try {
             con = sql.getConnection();
             st = con.prepareStatement(updateSt);
-            st.setInt(1, d.getIdCompra());
-            st.setInt(2, d.getIdProducto());
-            st.setString(3, d.getDetalle());
-            st.setBigDecimal(4, d.getCantidad());
-            st.setBigDecimal(5, d.getCostoUnitario());
-            st.setBigDecimal(6, d.getCostoPorCantidad());
-            st.setInt(7, d.getId());
+            st.setInt(1, dv.getIdVenta());
+            st.setInt(2, dv.getIdProducto());
+            st.setString(3, dv.getDetalle());
+            st.setBigDecimal(4, dv.getCantidad());
+            st.setBigDecimal(5, dv.getPrecioUnitario());
+            st.setBigDecimal(6, dv.getPrecioPorCantidad());
+            st.setInt(7, dv.getId());
             st.executeUpdate();
-            System.out.println("Detalle de compra actualizado exitosamente");
+            System.out.println("Detalle de venta actualizado exitosamente");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -152,20 +151,16 @@ public class DetalleCompraDAOImpMySQL implements IDetalleCompraDAO {
         }
     }
 
-    //Al "eliminar la compra" el detalle de compra asociado queda invalido
     @Override
-    public boolean deleteDetalleCompra(int idDetalleCompra) {
-        // Similar a `deleteCompra`, puedes definir la lógica de eliminación si aplica, como desactivar
-        // detalles de compra en lugar de eliminarlos físicamente.
+    public boolean deleteDetalleVenta(int idDetalleVenta) {
         try {
-            DetalleCompra detalleCompra = getDetalleCompra(idDetalleCompra);
-            if (detalleCompra != null) {
-                // No hay lógica de desactivación en la tabla `detalle compra`, por lo que se eliminaría directamente
-                // con un DELETE físico si se requiere.
-                System.out.println("Detalle de compra eliminado exitosamente");
+            DetalleVenta detalle = getDetalleVenta(idDetalleVenta);
+            if (detalle != null) {
+                updateDetalleVenta(detalle);
+                System.out.println("Detalle de venta desactivado exitosamente");
                 return true;
             } else {
-                System.out.println("Detalle de compra no encontrado");
+                System.out.println("Detalle de venta no encontrado");
             }
         } catch (SQLException | ClassNotFoundException | IOException e) {
             e.printStackTrace();
