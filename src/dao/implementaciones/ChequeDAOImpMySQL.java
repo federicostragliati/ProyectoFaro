@@ -38,7 +38,7 @@ public class ChequeDAOImpMySQL implements IChequeDAO {
             con = sql.getConnection();
             st = con.prepareStatement(addSt);
             st.setInt(1, c.getIdTransaccion());
-            st.setDate(2, new Date(c.getFechaRecepcion().getTime()));
+            st.setDate(2, new Date (c.getFechaRecepcion().getTime()));
             st.setString(3, c.getCuitEmisor());
             st.setString(4, c.getNombreEmisor());
             st.setString(5, c.getBancoProcedencia());
@@ -74,6 +74,7 @@ public class ChequeDAOImpMySQL implements IChequeDAO {
             st.setInt(1, idCheque);
             ResultSet resultSet = st.executeQuery();
             if (resultSet.next()) {
+                //System.out.println("Se Encontro cheque");
                 return new Cheque(
                         resultSet.getInt("ID"),
                         resultSet.getInt("IDTransaccion"),

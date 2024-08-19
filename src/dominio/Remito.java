@@ -5,6 +5,8 @@ import java.util.Date;
 
 public class Remito {
 
+    private static int contador = 0;
+
     private int id;
     private int linea;
     private int idVenta;
@@ -19,6 +21,20 @@ public class Remito {
     private BigDecimal cantidadProducto;
 
     public Remito() {
+    }
+
+    public Remito(int linea, int idVenta, Date fechaEntrega, int idCliente, String nombreCliente, String cuitCliente, String nroFactura, int idProducto, String detalleProducto, BigDecimal cantidadProducto) {
+        this.id = contador++;
+        this.linea = linea;
+        this.idVenta = idVenta;
+        this.fechaEntrega = fechaEntrega;
+        this.idCliente = idCliente;
+        this.nombreCliente = nombreCliente;
+        this.cuitCliente = cuitCliente;
+        this.nroFactura = nroFactura;
+        this.idProducto = idProducto;
+        this.detalleProducto = detalleProducto;
+        this.cantidadProducto = cantidadProducto;
     }
 
     public Remito(int id, int linea, int idVenta, Date fechaEntrega, int idCliente, String nombreCliente, String cuitCliente, String nroFactura, int idProducto, String detalleProducto, BigDecimal cantidadProducto) {
@@ -121,5 +137,22 @@ public class Remito {
 
     public void setCantidadProducto(BigDecimal cantidadProducto) {
         this.cantidadProducto = cantidadProducto;
+    }
+
+    @Override
+    public String toString() {
+        return "Remito{" +
+                "id=" + id +
+                ", linea=" + linea +
+                ", idVenta=" + idVenta +
+                ", fechaEntrega=" + fechaEntrega +
+                ", idCliente=" + idCliente +
+                ", nombreCliente='" + nombreCliente + '\'' +
+                ", cuitCliente='" + cuitCliente + '\'' +
+                ", nroFactura='" + nroFactura + '\'' +
+                ", idProducto=" + idProducto +
+                ", detalleProducto='" + detalleProducto + '\'' +
+                ", cantidadProducto=" + cantidadProducto +
+                '}';
     }
 }

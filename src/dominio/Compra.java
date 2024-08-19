@@ -5,6 +5,8 @@ import java.util.Date;
 
 public class Compra {
 
+    private static int contador = 0;
+
     private int id;
     private int idProveedor;
     private String cuitProveedor;
@@ -21,6 +23,21 @@ public class Compra {
     private boolean activo;
 
     public Compra() {
+    }
+
+    public Compra(int idProveedor, String cuitProveedor, Date fechaCompra, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean entregada, boolean activo) {
+        this.id = contador++;
+        this.idProveedor = idProveedor;
+        this.cuitProveedor = cuitProveedor;
+        this.fechaCompra = fechaCompra;
+        this.metodoDePagoPrimario = metodoDePagoPrimario;
+        this.montoDePagoPrimario = montoDePagoPrimario;
+        this.metodoDePagoSecundario = metodoDePagoSecundario;
+        this.montoDePagoSecundario = montoDePagoSecundario;
+        this.montoFinal = montoFinal;
+        this.pagada = pagada;
+        this.entregada = entregada;
+        this.activo = activo;
     }
 
     public Compra(int id, int idProveedor, String cuitProveedor, Date fechaCompra, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean entregada, boolean activo) {
@@ -132,5 +149,23 @@ public class Compra {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    @Override
+    public String toString() {
+        return "Compra{" +
+                "id=" + id +
+                ", idProveedor=" + idProveedor +
+                ", cuitProveedor='" + cuitProveedor + '\'' +
+                ", fechaCompra=" + fechaCompra +
+                ", metodoDePagoPrimario=" + metodoDePagoPrimario +
+                ", montoDePagoPrimario=" + montoDePagoPrimario +
+                ", metodoDePagoSecundario=" + metodoDePagoSecundario +
+                ", montoDePagoSecundario=" + montoDePagoSecundario +
+                ", montoFinal=" + montoFinal +
+                ", pagada=" + pagada +
+                ", entregada=" + entregada +
+                ", activo=" + activo +
+                '}';
     }
 }

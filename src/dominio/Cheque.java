@@ -7,6 +7,8 @@ import java.util.Date;
 
 public class Cheque {
 
+    private static int contador = 0;
+
     private int id;
     private int idTransaccion;
     private Date fechaRecepcion;
@@ -24,6 +26,23 @@ public class Cheque {
     private boolean activo; // verificar contra diseño de BBDD
 
     public Cheque() {
+    }
+
+    public Cheque(int idTransaccion, Date fechaRecepcion, String cuitEmisor, String nombreEmisor, String bancoProcedencia, String nroCheque, BigDecimal importe, Date fechaCheque, Date fechaCobro, Destino destino, String cuitDestino, boolean estado, boolean activo) {
+        this.id = contador++;
+        this.idTransaccion = idTransaccion;
+        this.fechaRecepcion = fechaRecepcion;
+        this.cuitEmisor = cuitEmisor;
+        this.nombreEmisor = nombreEmisor;
+        this.bancoProcedencia = bancoProcedencia;
+        this.nroCheque = nroCheque;
+        this.importe = importe;
+        this.fechaCheque = fechaCheque;
+        this.fechaCobro = fechaCobro;
+        this.destino = destino;
+        this.cuitDestino = cuitDestino;
+        this.estado = estado;
+        this.activo = activo;
     }
 
     public Cheque(int id, int idTransaccion, Date fechaRecepcion, String cuitEmisor, String nombreEmisor, String bancoProcedencia, String nroCheque, BigDecimal importe, Date fechaCheque, Date fechaCobro, Destino destino, String cuitDestino, boolean estado, boolean activo) {
@@ -153,5 +172,25 @@ public class Cheque {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    @Override
+    public String toString() {
+        return "Cheque{" +
+                "id=" + id +
+                ", idTransaccion=" + idTransaccion +
+                ", fechaRecepcion=" + fechaRecepcion +
+                ", cuitEmisor='" + cuitEmisor + '\'' +
+                ", nombreEmisor='" + nombreEmisor + '\'' +
+                ", bancoProcedencia='" + bancoProcedencia + '\'' +
+                ", nroCheque='" + nroCheque + '\'' +
+                ", importe=" + importe +
+                ", fechaCheque=" + fechaCheque +
+                ", fechaCobro=" + fechaCobro +
+                ", destino=" + destino +
+                ", cuitDestino='" + cuitDestino + '\'' +
+                ", estado=" + estado +
+                ", activo=" + activo +
+                '}';
     }
 }

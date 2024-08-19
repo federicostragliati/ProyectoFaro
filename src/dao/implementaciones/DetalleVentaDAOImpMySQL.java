@@ -153,18 +153,6 @@ public class DetalleVentaDAOImpMySQL implements IDetalleVentaDAO {
 
     @Override
     public boolean deleteDetalleVenta(int idDetalleVenta) {
-        try {
-            DetalleVenta detalle = getDetalleVenta(idDetalleVenta);
-            if (detalle != null) {
-                updateDetalleVenta(detalle);
-                System.out.println("Detalle de venta desactivado exitosamente");
-                return true;
-            } else {
-                System.out.println("Detalle de venta no encontrado");
-            }
-        } catch (SQLException | ClassNotFoundException | IOException e) {
-            e.printStackTrace();
-        }
-        return false;
+       return false;
     }
 }

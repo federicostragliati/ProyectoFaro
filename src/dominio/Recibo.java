@@ -5,6 +5,8 @@ import java.util.Date;
 
 public class Recibo {
 
+    private static int contador = 0;
+
     private int id;
     private int idVenta;
     private Date fechaRecibo;
@@ -26,6 +28,24 @@ public class Recibo {
     private BigDecimal montoFinal;
 
     public Recibo() {
+    }
+
+    public Recibo(int idVenta, Date fechaRecibo, int idCliente, String nombreCliente, String cuitCliente, String textoDineroRecibido, BigDecimal nroDineroRecibido, Date fechaPago, String factura, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal) {
+        this.id = contador++;
+        this.idVenta = idVenta;
+        this.fechaRecibo = fechaRecibo;
+        this.idCliente = idCliente;
+        this.nombreCliente = nombreCliente;
+        this.cuitCliente = cuitCliente;
+        this.textoDineroRecibido = textoDineroRecibido;
+        this.nroDineroRecibido = nroDineroRecibido;
+        this.fechaPago = fechaPago;
+        this.factura = factura;
+        this.metodoDePagoPrimario = metodoDePagoPrimario;
+        this.montoDePagoPrimario = montoDePagoPrimario;
+        this.metodoDePagoSecundario = metodoDePagoSecundario;
+        this.montoDePagoSecundario = montoDePagoSecundario;
+        this.montoFinal = montoFinal;
     }
 
     public Recibo(int id, int idVenta, Date fechaRecibo, int idCliente, String nombreCliente, String cuitCliente, String textoDineroRecibido, BigDecimal nroDineroRecibido, Date fechaPago, String factura, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal) {

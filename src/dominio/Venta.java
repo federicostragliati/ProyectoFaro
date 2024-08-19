@@ -5,6 +5,8 @@ import java.util.Date;
 
 public class Venta {
 
+    private static int contador = 0;
+
     private int id;
     private int IdCliente;
     private String CuitCliente;
@@ -21,6 +23,22 @@ public class Venta {
     private boolean activo;
 
     public Venta() {
+    }
+
+    public Venta(int idCliente, String cuitCliente, Date fechaVenta, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, boolean pagada, boolean completa, boolean entregada, BigDecimal montoFinal, boolean activo) {
+        this.id = contador++;
+        IdCliente = idCliente;
+        CuitCliente = cuitCliente;
+        this.fechaVenta = fechaVenta;
+        this.metodoDePagoPrimario = metodoDePagoPrimario;
+        this.montoDePagoPrimario = montoDePagoPrimario;
+        this.metodoDePagoSecundario = metodoDePagoSecundario;
+        this.montoDePagoSecundario = montoDePagoSecundario;
+        this.pagada = pagada;
+        this.completa = completa;
+        this.entregada = entregada;
+        this.montoFinal = montoFinal;
+        this.activo = activo;
     }
 
     public Venta(int id, int idCliente, String cuitCliente, Date fechaVenta, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, boolean pagada, boolean completa, boolean entregada, BigDecimal montoFinal, boolean activo) {

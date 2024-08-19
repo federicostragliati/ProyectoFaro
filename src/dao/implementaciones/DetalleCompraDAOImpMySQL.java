@@ -157,19 +157,8 @@ public class DetalleCompraDAOImpMySQL implements IDetalleCompraDAO {
     public boolean deleteDetalleCompra(int idDetalleCompra) {
         // Similar a `deleteCompra`, puedes definir la lógica de eliminación si aplica, como desactivar
         // detalles de compra en lugar de eliminarlos físicamente.
-        try {
-            DetalleCompra detalleCompra = getDetalleCompra(idDetalleCompra);
-            if (detalleCompra != null) {
-                // No hay lógica de desactivación en la tabla `detalle compra`, por lo que se eliminaría directamente
-                // con un DELETE físico si se requiere.
-                System.out.println("Detalle de compra eliminado exitosamente");
-                return true;
-            } else {
-                System.out.println("Detalle de compra no encontrado");
-            }
-        } catch (SQLException | ClassNotFoundException | IOException e) {
-            e.printStackTrace();
-        }
+        // No hay lógica de desactivación en la tabla `detalle compra`, por lo que se eliminaría directamente
+        // con un DELETE físico si se requiere.
         return false;
     }
 }

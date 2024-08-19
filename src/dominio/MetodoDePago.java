@@ -2,11 +2,19 @@ package dominio;
 
 public class MetodoDePago {
 
+    private static int contador = 0;
+
     private int id;
     private String metodo;
     private boolean activo;
 
     public MetodoDePago() {
+    }
+
+    public MetodoDePago(String metodo, boolean activo) {
+        this.id = contador++;
+        this.metodo = metodo;
+        this.activo = activo;
     }
 
     public MetodoDePago(int id, String metodo, boolean activo) {
@@ -38,4 +46,14 @@ public class MetodoDePago {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    @Override
+    public String toString() {
+        return "MetodoDePago{" +
+                "id=" + id +
+                ", metodo='" + metodo + '\'' +
+                ", activo=" + activo +
+                '}';
+    }
+
 }
