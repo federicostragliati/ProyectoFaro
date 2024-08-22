@@ -3,6 +3,8 @@ package dominio;
 import dominio.enums.Destino;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Cheque {
@@ -26,6 +28,7 @@ public class Cheque {
     private boolean activo; // verificar contra diseño de BBDD
 
     public Cheque() {
+        this.id = contador++;
     }
 
     public Cheque(int idTransaccion, Date fechaRecepcion, String cuitEmisor, String nombreEmisor, String bancoProcedencia, String nroCheque, BigDecimal importe, Date fechaCheque, Date fechaCobro, Destino destino, String cuitDestino, boolean estado, boolean activo) {
@@ -83,7 +86,7 @@ public class Cheque {
     }
 
     public void setFechaRecepcion(Date fechaRecepcion) {
-        this.fechaRecepcion = fechaRecepcion;
+       this.fechaRecepcion = fechaRecepcion;
     }
 
     public String getCuitEmisor() {
