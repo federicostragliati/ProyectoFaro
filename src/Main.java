@@ -14,32 +14,7 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) throws SQLException, IOException, ClassNotFoundException {
 
-        Date date = null;
-        String fechaString = "15/08/2024";
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-
-        try {
-            date = formatter.parse(fechaString);
-            System.out.println("Fecha: " + date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        Producto producto = new Producto("Banan",BigDecimal.valueOf(50),BigDecimal.valueOf(30), Unidad.UN,true);
-        Producto producto1 = new Producto(2,"Naranj",BigDecimal.valueOf(30),BigDecimal.valueOf(50), Unidad.KG,true);
-
-        ProductoDAO productoDAO = new ProductoDAO();
-
-        productoDAO.createProducto(producto1);
-
-//        System.out.println(productoDAOImpMySQL.getProducto(1));
-//
-//        List <Producto> productos = productoDAOImpMySQL.getProductos();
-//
-//        for (int i = 0; i < productos.size(); i++) {
-//            System.out.println(productos.get(i));
-//        }
-
+        System.out.printf("Test");
 
     }
 }
