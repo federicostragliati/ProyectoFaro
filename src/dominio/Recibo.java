@@ -5,33 +5,26 @@ import java.util.Date;
 
 public class Recibo {
 
-    private static int contador = 0;
-
     private int id;
     private int idVenta;
     private Date fechaRecibo;
     private int idCliente;
     private String nombreCliente;
     private String cuitCliente;
-
     private String textoDineroRecibido;
     private BigDecimal nroDineroRecibido;
-
     private Date fechaPago;
     private String factura;
     private int metodoDePagoPrimario;
     private BigDecimal montoDePagoPrimario;
-
     private int metodoDePagoSecundario;
     private BigDecimal montoDePagoSecundario;
-
     private BigDecimal montoFinal;
 
     public Recibo() {
     }
 
     public Recibo(int idVenta, Date fechaRecibo, int idCliente, String nombreCliente, String cuitCliente, String textoDineroRecibido, BigDecimal nroDineroRecibido, Date fechaPago, String factura, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal) {
-        this.id = contador++;
         this.idVenta = idVenta;
         this.fechaRecibo = fechaRecibo;
         this.idCliente = idCliente;

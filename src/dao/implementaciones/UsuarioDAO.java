@@ -1,7 +1,8 @@
 package dao.implementaciones;
 
-import dao.interfaces.IProveedorDAO;
-import dominio.Proveedor;
+import dao.interfaces.IUsuarioDAO;
+import dominio.Usuario;
+import dominio.enums.TipoUsuario;
 import shared.ConnectionSQL;
 
 import java.io.IOException;
@@ -10,10 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class ProveedorDAOImpMySQL implements IProveedorDAO {
+public class UsuarioDAO implements IUsuarioDAO {
 
     private ConnectionSQL sql;
     private String addSt;
@@ -21,29 +21,28 @@ public class ProveedorDAOImpMySQL implements IProveedorDAO {
     private String updateSt;
     private String selectAllSt;
 
-    public ProveedorDAOImpMySQL() {
+    public UsuarioDAO() {
         sql = new ConnectionSQL();
-        addSt = "INSERT INTO proveedores (CUIT, RazonSocial, Email, Telefono, Direccion, Activo) VALUES (?,?,?,?,?,?);";
-        getSt = "SELECT * FROM proveedores WHERE ID = ?;";
-        updateSt = "UPDATE proveedores SET CUIT = ?, RazonSocial = ?, Email = ?, Telefono = ?, Direccion = ?, Activo = ? WHERE ID = ?;";
-        selectAllSt = "SELECT * FROM proveedores;";
+        addSt = "INSERT INTO usuarios (`Nombre de Usuario`, Nombre, Contraseña, `Tipo de Usuario`, Activo) VALUES (?, ?, ?, ?, ?);";
+        getSt = "SELECT * FROM usuarios WHERE idUsuarios = ?;";
+        updateSt = "UPDATE usuarios SET `Nombre de Usuario` = ?, Nombre = ?, Contraseña = ?, `Tipo de Usuario` = ?, Activo = ? WHERE idUsuarios = ?;";
+        selectAllSt = "SELECT * FROM usuarios;";
     }
 
     @Override
-    public void createProveedor(Proveedor p) throws SQLException, ClassNotFoundException, IOException {
+    public void createUsuario(Usuario u) throws SQLException, ClassNotFoundException, IOException {
         Connection con = null;
         PreparedStatement st = null;
         try {
             con = sql.getConnection();
             st = con.prepareStatement(addSt);
-            st.setString(1, p.getCuit());
-            st.setString(2, p.getRazonSocial());
-            st.setString(3, p.getEmail());
-            st.setString(4, p.getTelefono());
-            st.setString(5, p.getDireccion());
-            st.setBoolean(6, p.isActivo());
+            st.setString(1, u.getNombreUsuario());
+            st.setString(2, u.getNombre());
+            st.setString(3, u.getContraseña());
+            st.setString(4, u.getTipoUsuario().toString());
+            st.setBoolean(5, u.isActivo());
             st.executeUpdate();
-            System.out.println("Proveedor agregado exitosamente");
+            System.out.println("Usuario agregado exitosamente");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -57,25 +56,24 @@ public class ProveedorDAOImpMySQL implements IProveedorDAO {
     }
 
     @Override
-    public Proveedor getProveedor(int idProveedor) throws SQLException, ClassNotFoundException, IOException {
+    public Usuario getUsuario(int idUsuario) throws SQLException, ClassNotFoundException, IOException {
         Connection con = null;
         PreparedStatement st = null;
         try {
             con = sql.getConnection();
             st = con.prepareStatement(getSt);
-            st.setInt(1, idProveedor);
+            st.setInt(1, idUsuario);
             ResultSet resultSet = st.executeQuery();
             if (resultSet.next()) {
-                return new Proveedor(
-                        resultSet.getInt("ID"),
-                        resultSet.getString("CUIT"),
-                        resultSet.getString("RazonSocial"),
-                        resultSet.getString("Email"),
-                        resultSet.getString("Telefono"),
-                        resultSet.getString("Direccion"),
+                return new Usuario(
+                        resultSet.getInt("idUsuarios"),
+                        resultSet.getString("Nombre de Usuario"),
+                        resultSet.getString("Nombre"),
+                        resultSet.getString("Contraseña"),
+                        TipoUsuario.valueOf(resultSet.getString("Tipo de Usuario")),
                         resultSet.getBoolean("Activo"));
             } else {
-                System.out.println("No se encontró ningún proveedor con el ID: " + idProveedor);
+                System.out.println("No se encontró ningún usuario con el ID: " + idUsuario);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -91,22 +89,21 @@ public class ProveedorDAOImpMySQL implements IProveedorDAO {
     }
 
     @Override
-    public List<Proveedor> getProveedores() throws SQLException, ClassNotFoundException, IOException {
+    public List<Usuario> getUsuarios() throws SQLException, ClassNotFoundException, IOException {
         Connection con = null;
         PreparedStatement st = null;
-        List<Proveedor> proveedores = new ArrayList<>();
+        List<Usuario> usuarios = new ArrayList<>();
         try {
             con = sql.getConnection();
             st = con.prepareStatement(selectAllSt);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                proveedores.add(new Proveedor(
-                        rs.getInt("ID"),
-                        rs.getString("CUIT"),
-                        rs.getString("RazonSocial"),
-                        rs.getString("Email"),
-                        rs.getString("Telefono"),
-                        rs.getString("Direccion"),
+                usuarios.add(new Usuario(
+                        rs.getInt("idUsuarios"),
+                        rs.getString("Nombre de Usuario"),
+                        rs.getString("Nombre"),
+                        rs.getString("Contraseña"),
+                        TipoUsuario.valueOf(rs.getString("Tipo de Usuario")),
                         rs.getBoolean("Activo")));
             }
         } catch (SQLException e) {
@@ -120,25 +117,24 @@ public class ProveedorDAOImpMySQL implements IProveedorDAO {
                 e.printStackTrace();
             }
         }
-        return proveedores;
+        return usuarios;
     }
 
     @Override
-    public void updateProveedor(Proveedor p) throws SQLException, ClassNotFoundException, IOException {
+    public void updateUsuario(Usuario u) throws SQLException, ClassNotFoundException, IOException {
         Connection con = null;
         PreparedStatement st = null;
         try {
             con = sql.getConnection();
             st = con.prepareStatement(updateSt);
-            st.setString(1, p.getCuit());
-            st.setString(2, p.getRazonSocial());
-            st.setString(3, p.getEmail());
-            st.setString(4, p.getTelefono());
-            st.setString(5, p.getDireccion());
-            st.setBoolean(6, p.isActivo());
-            st.setInt(7, p.getId());
+            st.setString(1, u.getNombreUsuario());
+            st.setString(2, u.getNombre());
+            st.setString(3, u.getContraseña());
+            st.setString(4, u.getTipoUsuario().toString());
+            st.setBoolean(5, u.isActivo());
+            st.setInt(6, u.getId());
             st.executeUpdate();
-            System.out.println("Proveedor actualizado exitosamente");
+            System.out.println("Usuario actualizado exitosamente");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -152,16 +148,16 @@ public class ProveedorDAOImpMySQL implements IProveedorDAO {
     }
 
     @Override
-    public boolean deleteProveedor(int idProveedor) {
+    public boolean deleteUsuario(int idUsuario) throws SQLException, ClassNotFoundException, IOException {
         try {
-            Proveedor proveedor = getProveedor(idProveedor);
-            if (proveedor != null) {
-                proveedor.setActivo(false);
-                updateProveedor(proveedor);
-                System.out.println("Proveedor desactivado exitosamente");
+            Usuario usuario = getUsuario(idUsuario);
+            if (usuario != null) {
+                usuario.setActivo(false);
+                updateUsuario(usuario);
+                System.out.println("Usuario desactivado exitosamente");
                 return true;
             } else {
-                System.out.println("Proveedor no encontrado");
+                System.out.println("Usuario no encontrado");
             }
         } catch (SQLException | ClassNotFoundException | IOException e) {
             e.printStackTrace();

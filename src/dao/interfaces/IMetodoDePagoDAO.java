@@ -11,5 +11,5 @@ public interface IMetodoDePagoDAO {
     public MetodoDePago getMetodoDePago(int idMetodoDePago) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public List<MetodoDePago> getMetodoDePagos() throws SQLException, ClassNotFoundException, IOException; //statement
     public void updateMetodoDePago (MetodoDePago mdp) throws SQLException, ClassNotFoundException, IOException; //prepare statement
-    public boolean deleteMetodoDePago(int idMetodoDePago); //prepare statement
+    public boolean deleteMetodoDePago(int idMetodoDePago) throws SQLException, ClassNotFoundException, IOException; //prepare statement
 }

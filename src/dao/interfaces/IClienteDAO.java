@@ -13,5 +13,5 @@ public interface IClienteDAO {
     public Cliente getCliente(int idCliente) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public List<Cliente> getClientes() throws SQLException, ClassNotFoundException, IOException; //statement
     public void updateCliente (Cliente c) throws SQLException, ClassNotFoundException, IOException; //prepare statement
-    public boolean deleteCliente(int idCliente); //prepare statement
+    public boolean deleteCliente(int idCliente)throws SQLException, ClassNotFoundException, IOException; //prepare statement
 }

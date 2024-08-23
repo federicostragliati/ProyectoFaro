@@ -5,15 +5,12 @@ import java.util.Date;
 
 public class Venta {
 
-    private static int contador = 0;
-
     private int id;
     private int IdCliente;
     private String CuitCliente;
     private Date fechaVenta;
     private int metodoDePagoPrimario;
     private BigDecimal montoDePagoPrimario;
-
     private int metodoDePagoSecundario;
     private BigDecimal montoDePagoSecundario;
     private boolean pagada;
@@ -26,7 +23,6 @@ public class Venta {
     }
 
     public Venta(int idCliente, String cuitCliente, Date fechaVenta, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, boolean pagada, boolean completa, boolean entregada, BigDecimal montoFinal, boolean activo) {
-        this.id = contador++;
         IdCliente = idCliente;
         CuitCliente = cuitCliente;
         this.fechaVenta = fechaVenta;

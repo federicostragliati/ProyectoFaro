@@ -12,6 +12,6 @@ public interface IUsuarioDAO {
     public Usuario getUsuario(int idUsuario) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public List<Usuario> getUsuarios() throws SQLException, ClassNotFoundException, IOException; //statement
     public void updateUsuario (Usuario u) throws SQLException, ClassNotFoundException, IOException; //prepare statement
-    public boolean deleteUsuario(int idUsuario); //prepare statement
+    public boolean deleteUsuario(int idUsuario) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     
 }

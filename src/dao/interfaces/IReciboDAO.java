@@ -11,6 +11,6 @@ public interface IReciboDAO {
     public Recibo getRecibo(int idRecibo) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public List<Recibo> getRecibos() throws SQLException, ClassNotFoundException, IOException; //statement
     public void updateRecibo (Recibo r) throws SQLException, ClassNotFoundException, IOException; //prepare statement
-    public boolean deleteRecibo(int idRecibo); //prepare statement
+    public boolean deleteRecibo(int idRecibo) throws SQLException, ClassNotFoundException, IOException; //prepare statement
 
 }

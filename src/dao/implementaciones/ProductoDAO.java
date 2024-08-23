@@ -4,17 +4,15 @@ import dao.interfaces.IProductoDAO;
 import dominio.Producto;
 import dominio.enums.Unidad;
 import shared.ConnectionSQL;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class ProductoDAOImpMySQL implements IProductoDAO {
+public class ProductoDAO implements IProductoDAO {
 
     private ConnectionSQL sql;
     private String addSt;
@@ -22,7 +20,7 @@ public class ProductoDAOImpMySQL implements IProductoDAO {
     private String updateSt;
     private String selectAllSt;
 
-    public ProductoDAOImpMySQL() {
+    public ProductoDAO() {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO productos (Detalle, Cantidad, PrecioUnitario, UnidadVenta, Activo) VALUES (?,?,?,?,?);";
         getSt =  "SELECT * FROM productos WHERE ID = ?;";
@@ -152,7 +150,7 @@ public class ProductoDAOImpMySQL implements IProductoDAO {
     }
 
     @Override
-    public boolean deleteProducto(int idProducto) {
+    public boolean deleteProducto(int idProducto) throws SQLException, ClassNotFoundException, IOException {
         try {
             Producto producto = getProducto(idProducto);
             if (producto != null) {

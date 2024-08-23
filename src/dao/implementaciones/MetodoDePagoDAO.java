@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MetodoDePagoDAOImpMySQL implements IMetodoDePagoDAO {
+public class MetodoDePagoDAO implements IMetodoDePagoDAO {
 
     private ConnectionSQL sql;
     private String addSt;
@@ -20,7 +20,7 @@ public class MetodoDePagoDAOImpMySQL implements IMetodoDePagoDAO {
     private String updateSt;
     private String selectAllSt;
 
-    public MetodoDePagoDAOImpMySQL() {
+    public MetodoDePagoDAO() {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO metodosdepago (Nombre, Activo) VALUES (?, ?);";
         getSt = "SELECT * FROM metodosdepago WHERE ID = ?;";
@@ -135,7 +135,7 @@ public class MetodoDePagoDAOImpMySQL implements IMetodoDePagoDAO {
     }
 
     @Override
-    public boolean deleteMetodoDePago(int idMetodo) {
+    public boolean deleteMetodoDePago(int idMetodo) throws SQLException, ClassNotFoundException, IOException {
         try {
             MetodoDePago metodoDePago = getMetodoDePago(idMetodo);
             if (metodoDePago != null) {

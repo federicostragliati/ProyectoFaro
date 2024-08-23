@@ -10,7 +10,7 @@ public interface IVentaDAO {
 
     public void createVenta(Venta v) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public Venta getVenta(int idVenta) throws SQLException, ClassNotFoundException, IOException; //prepare statement
-    public List<Venta> getVentas() throws SQLException, ClassNotFoundException, IOException; //statement
+    public List<Object> getVentas() throws SQLException, ClassNotFoundException, IOException; //statement
     public void updateVenta (Venta v) throws SQLException, ClassNotFoundException, IOException; //prepare statement
-    public boolean deleteVenta(int idVenta); //prepare statement
+    public boolean deleteVenta(int idVenta) throws SQLException, ClassNotFoundException, IOException; //prepare statement
 }

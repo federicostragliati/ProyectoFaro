@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteDAOImpMySQL implements IClienteDAO {
+public class ClienteDAO implements IClienteDAO {
 
     private ConnectionSQL sql;
     private String addSt;
@@ -20,7 +20,7 @@ public class ClienteDAOImpMySQL implements IClienteDAO {
     private String updateSt;
     private String selectAllSt;
 
-    public ClienteDAOImpMySQL() {
+    public ClienteDAO() {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO clientes ( ID, CUIT, Nombre, Email, Telefono, Activo) VALUES (?,?,?,?,?,?);";
         getSt = "SELECT * FROM clientes WHERE ID = ?";
@@ -148,7 +148,7 @@ public class ClienteDAOImpMySQL implements IClienteDAO {
     }
 
     @Override
-    public boolean deleteCliente(int idCliente) {
+    public boolean deleteCliente(int idCliente) throws SQLException, ClassNotFoundException, IOException {
         try {
             Cliente cliente = getCliente(idCliente);
             cliente.setActivo(false);

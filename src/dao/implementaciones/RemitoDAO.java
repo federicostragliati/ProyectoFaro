@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RemitoDAOImpMySQL implements IRemitoDAO {
+public class RemitoDAO implements IRemitoDAO {
 
     private ConnectionSQL sql;
     private String addSt;
@@ -21,7 +21,7 @@ public class RemitoDAOImpMySQL implements IRemitoDAO {
     private String updateSt;
     private String selectAllSt;
 
-    public RemitoDAOImpMySQL() {
+    public RemitoDAO() {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO remitos (Linea, IDVenta, FechaEntrega, IDCliente, NombreCliente, CUITCliente, Factura, IDProducto, Cantidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM remitos WHERE ID = ?;";
@@ -166,7 +166,7 @@ public class RemitoDAOImpMySQL implements IRemitoDAO {
     }
 
     @Override
-    public boolean deleteRemito(int idRemito) {
+    public boolean deleteRemito(int idRemito) throws SQLException, ClassNotFoundException, IOException {
         try {
             Remito remito = getRemito(idRemito);
             if (remito != null) {

@@ -1,14 +1,10 @@
 import dao.implementaciones.*;
 import dominio.*;
-import dominio.enums.Destino;
 import dominio.enums.Unidad;
-import shared.ConnectionSQL;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,9 +28,9 @@ public class Main {
         Producto producto = new Producto("Banan",BigDecimal.valueOf(50),BigDecimal.valueOf(30), Unidad.UN,true);
         Producto producto1 = new Producto(2,"Naranj",BigDecimal.valueOf(30),BigDecimal.valueOf(50), Unidad.KG,true);
 
-        ProductoDAOImpMySQL productoDAOImpMySQL = new ProductoDAOImpMySQL();
+        ProductoDAO productoDAO = new ProductoDAO();
 
-        productoDAOImpMySQL.createProducto(producto1);
+        productoDAO.createProducto(producto1);
 
 //        System.out.println(productoDAOImpMySQL.getProducto(1));
 //

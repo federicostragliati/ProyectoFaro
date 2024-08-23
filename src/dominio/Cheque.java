@@ -9,8 +9,6 @@ import java.util.Date;
 
 public class Cheque {
 
-    private static int contador = 0;
-
     private int id;
     private int idTransaccion;
     private Date fechaRecepcion;
@@ -21,18 +19,16 @@ public class Cheque {
     private BigDecimal  importe;
     private Date fechaCheque;
     private Date fechaCobro;
-
     private Destino destino;
     private String cuitDestino;
     private boolean estado;
     private boolean activo; // verificar contra diseño de BBDD
 
     public Cheque() {
-        this.id = contador++;
+
     }
 
     public Cheque(int idTransaccion, Date fechaRecepcion, String cuitEmisor, String nombreEmisor, String bancoProcedencia, String nroCheque, BigDecimal importe, Date fechaCheque, Date fechaCobro, Destino destino, String cuitDestino, boolean estado, boolean activo) {
-        this.id = contador++;
         this.idTransaccion = idTransaccion;
         this.fechaRecepcion = fechaRecepcion;
         this.cuitEmisor = cuitEmisor;
@@ -177,23 +173,4 @@ public class Cheque {
         this.activo = activo;
     }
 
-    @Override
-    public String toString() {
-        return "Cheque{" +
-                "id=" + id +
-                ", idTransaccion=" + idTransaccion +
-                ", fechaRecepcion=" + fechaRecepcion +
-                ", cuitEmisor='" + cuitEmisor + '\'' +
-                ", nombreEmisor='" + nombreEmisor + '\'' +
-                ", bancoProcedencia='" + bancoProcedencia + '\'' +
-                ", nroCheque='" + nroCheque + '\'' +
-                ", importe=" + importe +
-                ", fechaCheque=" + fechaCheque +
-                ", fechaCobro=" + fechaCobro +
-                ", destino=" + destino +
-                ", cuitDestino='" + cuitDestino + '\'' +
-                ", estado=" + estado +
-                ", activo=" + activo +
-                '}';
-    }
 }

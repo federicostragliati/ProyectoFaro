@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompraDAOImpMySQL implements ICompraDAO {
+public class CompraDAO implements ICompraDAO {
 
     private ConnectionSQL sql;
     private String addSt;
@@ -21,7 +21,7 @@ public class CompraDAOImpMySQL implements ICompraDAO {
     private String updateSt;
     private String selectAllSt;
 
-    public CompraDAOImpMySQL() {
+    public CompraDAO() {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO compras (IDProveedor, CUITProveedor, FechaCompra, MetodoPagoPrimario, MontoPagoPrimario, MetodoPagoSecundario, MontoPagoSecundario, MontoFinal, Pagado, Entregado, Activo) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
         getSt = "SELECT * FROM compras WHERE ID = ?;";
@@ -172,7 +172,7 @@ public class CompraDAOImpMySQL implements ICompraDAO {
     }
 
     @Override
-    public boolean deleteCompra(int idCompra) {
+    public boolean deleteCompra(int idCompra) throws SQLException, ClassNotFoundException, IOException {
         try {
             Compra compra = getCompra(idCompra);
             if (compra != null) {

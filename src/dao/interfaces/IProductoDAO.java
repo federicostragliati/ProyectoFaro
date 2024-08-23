@@ -11,6 +11,6 @@ public interface IProductoDAO {
     public Producto getProducto(int idProducto) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public List<Producto> getProductos() throws SQLException, ClassNotFoundException, IOException; //statement
     public void updateProducto (Producto p) throws SQLException, ClassNotFoundException, IOException; //prepare statement
-    public boolean deleteProducto(int idProducto); //prepare statement
+    public boolean deleteProducto(int idProducto) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     
 }
