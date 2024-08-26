@@ -188,7 +188,7 @@ public class VentaDAO implements IVentaDAO {
                 System.out.println("Venta no encontrada");
             }
         } catch (SQLException | ClassNotFoundException | IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); //
         }
         return false;
     }
