@@ -21,6 +21,7 @@ public class Cliente {
     }
 
     public Cliente(int id, String cuitCliente, String nombre, String email, String telefono, boolean activo) {
+        this.id = id;
         this.cuitCliente = cuitCliente;
         this.nombre = nombre;
         this.email = email;

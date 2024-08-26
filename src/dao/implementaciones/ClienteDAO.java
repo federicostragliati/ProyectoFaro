@@ -153,6 +153,7 @@ public class ClienteDAO implements IClienteDAO {
             Cliente cliente = getCliente(idCliente);
             cliente.setActivo(false);
             updateCliente(cliente);
+            return true;
         } catch (SQLException | ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
