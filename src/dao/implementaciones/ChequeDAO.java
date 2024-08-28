@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChequeDAOImpMySQL implements IChequeDAO {
+public class ChequeDAO implements IChequeDAO {
 
     private ConnectionSQL sql;
     private String addSt;
@@ -22,7 +22,7 @@ public class ChequeDAOImpMySQL implements IChequeDAO {
     private String updateSt;
     private String selectAllSt;
 
-    public ChequeDAOImpMySQL() {
+    public ChequeDAO() {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO cheques (IDTransaccion, FechaRecepcion, CuitEmisor, NombreEmisor, BancoProcedencia, NroCheque, Importe, FechaCheque, FechaCobro, Destino, CuitDestino, Estado, Activo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
         getSt = "SELECT * FROM cheques WHERE ID = ?;";
@@ -182,7 +182,7 @@ public class ChequeDAOImpMySQL implements IChequeDAO {
     }
 
     @Override
-    public boolean deleteCheque(int idCheque) {
+    public boolean deleteCheque(int idCheque) throws SQLException, ClassNotFoundException, IOException {
         try {
             Cheque cheque = getCheque(idCheque);
             if (cheque != null) {

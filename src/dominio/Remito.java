@@ -13,7 +13,6 @@ public class Remito {
     private Date fechaEntrega;
     private int idCliente;
     private String nombreCliente;
-
     private String cuitCliente;
     private String nroFactura;
     private int idProducto;
@@ -24,7 +23,6 @@ public class Remito {
     }
 
     public Remito(int linea, int idVenta, Date fechaEntrega, int idCliente, String nombreCliente, String cuitCliente, String nroFactura, int idProducto, String detalleProducto, BigDecimal cantidadProducto) {
-        this.id = contador++;
         this.linea = linea;
         this.idVenta = idVenta;
         this.fechaEntrega = fechaEntrega;
@@ -139,20 +137,4 @@ public class Remito {
         this.cantidadProducto = cantidadProducto;
     }
 
-    @Override
-    public String toString() {
-        return "Remito{" +
-                "id=" + id +
-                ", linea=" + linea +
-                ", idVenta=" + idVenta +
-                ", fechaEntrega=" + fechaEntrega +
-                ", idCliente=" + idCliente +
-                ", nombreCliente='" + nombreCliente + '\'' +
-                ", cuitCliente='" + cuitCliente + '\'' +
-                ", nroFactura='" + nroFactura + '\'' +
-                ", idProducto=" + idProducto +
-                ", detalleProducto='" + detalleProducto + '\'' +
-                ", cantidadProducto=" + cantidadProducto +
-                '}';
-    }
 }

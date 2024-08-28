@@ -4,23 +4,18 @@ import java.math.BigDecimal;
 
 public class DetalleVenta {
 
-    private static int contador = 0;
-
     private int id;
     private int idVenta;
     private int idProducto;
-
     private String detalle;
     private BigDecimal cantidad;
     private BigDecimal precioUnitario;
-
     private BigDecimal precioPorCantidad;
 
     public DetalleVenta() {
     }
 
     public DetalleVenta(int idVenta, int idProducto, String detalle, BigDecimal cantidad, BigDecimal precioUnitario, BigDecimal precioPorCantidad) {
-        this.id = contador++;
         this.idVenta = idVenta;
         this.idProducto = idProducto;
         this.detalle = detalle;
@@ -95,17 +90,4 @@ public class DetalleVenta {
         this.precioPorCantidad = precioPorCantidad;
     }
 
-    @Override
-    public String toString() {
-        return "DetalleVenta{" +
-                "id=" + id +
-                ", idVenta=" + idVenta +
-                ", idProducto=" + idProducto +
-                ", detalle='" + detalle + '\'' +
-                ", cantidad=" + cantidad +
-                ", precioUnitario=" + precioUnitario +
-                ", precioPorCantidad=" + precioPorCantidad +
-                '}';
-    }
-    
 }

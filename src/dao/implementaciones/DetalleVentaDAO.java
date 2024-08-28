@@ -5,7 +5,6 @@ import dominio.DetalleVenta;
 import shared.ConnectionSQL;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetalleVentaDAOImpMySQL implements IDetalleVentaDAO {
+public class DetalleVentaDAO implements IDetalleVentaDAO {
 
     private ConnectionSQL sql;
     private String addSt;
@@ -21,7 +20,7 @@ public class DetalleVentaDAOImpMySQL implements IDetalleVentaDAO {
     private String updateSt;
     private String selectAllSt;
 
-    public DetalleVentaDAOImpMySQL() {
+    public DetalleVentaDAO() {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO detalleventa (IDVenta, IDProducto, DetalleProducto, Cantidad, PrecioUnitario, PrecioPorCantidad) VALUES (?, ?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM detalleventa WHERE ID = ?;";
@@ -152,7 +151,7 @@ public class DetalleVentaDAOImpMySQL implements IDetalleVentaDAO {
     }
 
     @Override
-    public boolean deleteDetalleVenta(int idDetalleVenta) {
+    public boolean deleteDetalleVenta(int idDetalleVenta) throws SQLException, ClassNotFoundException, IOException {
        return false;
     }
 }

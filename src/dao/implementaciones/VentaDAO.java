@@ -5,7 +5,6 @@ import dominio.Venta;
 import shared.ConnectionSQL;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -14,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VentaDAOImpMySQL implements IVentaDAO {
+public class VentaDAO implements IVentaDAO {
 
     private ConnectionSQL sql;
     private String addSt;
@@ -22,7 +21,7 @@ public class VentaDAOImpMySQL implements IVentaDAO {
     private String updateSt;
     private String selectAllSt;
 
-    public VentaDAOImpMySQL() {
+    public VentaDAO() {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO ventas (ID Cliente, CUIT Cliente, Fecha Venta, Metodo de Pago Primario, Monto de Pago Primario, Metodo de Pago Secundario, Monto de Pago Secundario, Monto Final, Pagado, Completa, Entregada, Activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM ventas WHERE `ID Venta` = ?;";
@@ -177,7 +176,7 @@ public class VentaDAOImpMySQL implements IVentaDAO {
     }
 
     @Override
-    public boolean deleteVenta(int idVenta) {
+    public boolean deleteVenta(int idVenta) throws SQLException, ClassNotFoundException, IOException {
         try {
             Venta venta = getVenta(idVenta);
             if (venta != null) {
@@ -189,7 +188,7 @@ public class VentaDAOImpMySQL implements IVentaDAO {
                 System.out.println("Venta no encontrada");
             }
         } catch (SQLException | ClassNotFoundException | IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); //
         }
         return false;
     }

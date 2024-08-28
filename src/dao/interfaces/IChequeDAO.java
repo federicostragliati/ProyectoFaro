@@ -12,5 +12,5 @@ public interface IChequeDAO {
     public Cheque getCheque(int idCheque) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public List<Cheque> getCheques() throws SQLException, ClassNotFoundException, IOException; //statement
     public void updateCheque (Cheque c) throws SQLException, ClassNotFoundException, IOException; //prepare statement
-    public boolean deleteCheque(int idCheque); //prepare statement
+    public boolean deleteCheque(int idCheque)throws SQLException, ClassNotFoundException, IOException; //prepare statement
 }

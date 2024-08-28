@@ -3,7 +3,6 @@ package dominio;
 import dominio.enums.TipoUsuario;
 
 public class Usuario {
-    private static int contador = 0;
 
     private int id;
     private String nombreUsuario;
@@ -17,7 +16,6 @@ public class Usuario {
     }
 
     public Usuario(String nombreUsuario, String nombre, String contraseña, TipoUsuario tipoUsuario, boolean activo) {
-        this.id = contador++;
         this.nombreUsuario = nombreUsuario;
         this.nombre = nombre;
         this.contraseña = contraseña;

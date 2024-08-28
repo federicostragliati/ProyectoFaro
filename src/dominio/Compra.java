@@ -5,18 +5,14 @@ import java.util.Date;
 
 public class Compra {
 
-    private static int contador = 0;
-
     private int id;
     private int idProveedor;
     private String cuitProveedor;
     private Date fechaCompra;
     private int metodoDePagoPrimario;
     private BigDecimal montoDePagoPrimario;
-
     private int metodoDePagoSecundario;
     private BigDecimal montoDePagoSecundario;
-
     private BigDecimal montoFinal;
     private boolean pagada;
     private boolean entregada;
@@ -26,7 +22,6 @@ public class Compra {
     }
 
     public Compra(int idProveedor, String cuitProveedor, Date fechaCompra, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean entregada, boolean activo) {
-        this.id = contador++;
         this.idProveedor = idProveedor;
         this.cuitProveedor = cuitProveedor;
         this.fechaCompra = fechaCompra;
@@ -151,21 +146,4 @@ public class Compra {
         this.activo = activo;
     }
 
-    @Override
-    public String toString() {
-        return "Compra{" +
-                "id=" + id +
-                ", idProveedor=" + idProveedor +
-                ", cuitProveedor='" + cuitProveedor + '\'' +
-                ", fechaCompra=" + fechaCompra +
-                ", metodoDePagoPrimario=" + metodoDePagoPrimario +
-                ", montoDePagoPrimario=" + montoDePagoPrimario +
-                ", metodoDePagoSecundario=" + metodoDePagoSecundario +
-                ", montoDePagoSecundario=" + montoDePagoSecundario +
-                ", montoFinal=" + montoFinal +
-                ", pagada=" + pagada +
-                ", entregada=" + entregada +
-                ", activo=" + activo +
-                '}';
-    }
 }

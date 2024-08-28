@@ -6,8 +6,6 @@ import java.math.BigDecimal;
 
 public class Producto {
 
-    private static int contador = 0;
-
     private int id;
     private String detalle;
     private BigDecimal cantidad;
@@ -19,7 +17,6 @@ public class Producto {
     }
 
     public Producto(String detalle, BigDecimal cantidad, BigDecimal precioUnitario, Unidad unidad, boolean activo) {
-        this.id = contador++;
         this.detalle = detalle;
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
@@ -84,15 +81,4 @@ public class Producto {
         this.activo = activo;
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" +
-                "id=" + id +
-                ", detalle='" + detalle + '\'' +
-                ", cantidad=" + cantidad +
-                ", precioUnitario=" + precioUnitario +
-                ", unidad=" + unidad +
-                ", activo=" + activo +
-                '}';
-    }
 }

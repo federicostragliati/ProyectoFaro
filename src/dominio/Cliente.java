@@ -2,8 +2,6 @@ package dominio;
 
 public class Cliente {
 
-    private static int contador = 0;
-
     private int id;
     private String cuitCliente;
     private String nombre;
@@ -15,7 +13,6 @@ public class Cliente {
     }
 
     public Cliente( String cuitCliente, String nombre, String email, String telefono, boolean activo) {
-        this.id = contador++;
         this.cuitCliente = cuitCliente;
         this.nombre = nombre;
         this.email = email;
@@ -80,15 +77,5 @@ public class Cliente {
         this.activo = activo;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente{" +
-                "id=" + id +
-                ", cuitCliente='" + cuitCliente + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", email='" + email + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", activo=" + activo +
-                '}';
-    }
+
 }

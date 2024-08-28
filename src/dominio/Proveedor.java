@@ -2,14 +2,10 @@ package dominio;
 
 public class Proveedor {
 
-    private static int contador=0;
-
     private int id;
     private String cuit;
-
     private String razonSocial;
     private String email;
-
     private String telefono;
     private String direccion;
     private boolean activo;
@@ -18,7 +14,6 @@ public class Proveedor {
     }
 
     public Proveedor(String cuit, String razonSocial, String email, String telefono, String direccion, boolean activo) {
-        this.id = contador++;
         this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.email = email;

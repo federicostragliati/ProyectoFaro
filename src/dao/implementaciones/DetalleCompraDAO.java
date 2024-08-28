@@ -5,7 +5,6 @@ import dominio.DetalleCompra;
 import shared.ConnectionSQL;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetalleCompraDAOImpMySQL implements IDetalleCompraDAO {
+public class DetalleCompraDAO implements IDetalleCompraDAO {
 
     private ConnectionSQL sql;
     private String addSt;
@@ -21,7 +20,7 @@ public class DetalleCompraDAOImpMySQL implements IDetalleCompraDAO {
     private String updateSt;
     private String selectAllSt;
 
-    public DetalleCompraDAOImpMySQL() {
+    public DetalleCompraDAO() {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO detallecompra (IDCompra, IDProducto, DetalleProducto, Cantidad, CostoUnitario, CostoPorCantidad) VALUES (?,?,?,?,?,?);";
         getSt = "SELECT * FROM detallecompra WHERE ID = ?;";
@@ -154,7 +153,7 @@ public class DetalleCompraDAOImpMySQL implements IDetalleCompraDAO {
 
     //Al "eliminar la compra" el detalle de compra asociado queda invalido
     @Override
-    public boolean deleteDetalleCompra(int idDetalleCompra) {
+    public boolean deleteDetalleCompra(int idDetalleCompra) throws SQLException, ClassNotFoundException, IOException {
         // Similar a `deleteCompra`, puedes definir la lógica de eliminación si aplica, como desactivar
         // detalles de compra en lugar de eliminarlos físicamente.
         // No hay lógica de desactivación en la tabla `detalle compra`, por lo que se eliminaría directamente

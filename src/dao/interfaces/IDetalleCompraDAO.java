@@ -12,5 +12,5 @@ public interface IDetalleCompraDAO {
     public DetalleCompra getDetalleCompra(int idDetalleCompra) throws SQLException, ClassNotFoundException, IOException; //prepare statement
     public List<DetalleCompra> getDetalleCompras() throws SQLException, ClassNotFoundException, IOException; //statement
     public void updateDetalleCompra (DetalleCompra dc) throws SQLException, ClassNotFoundException, IOException; //prepare statement
-    public boolean deleteDetalleCompra(int idDetalleCompra); //prepare statement
+    public boolean deleteDetalleCompra(int idDetalleCompra)throws SQLException, ClassNotFoundException, IOException; //prepare statement
 }

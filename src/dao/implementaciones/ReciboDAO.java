@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReciboDAOImpMySQL implements IReciboDAO {
+public class ReciboDAO implements IReciboDAO {
 
     private ConnectionSQL sql;
     private String addSt;
@@ -21,7 +21,7 @@ public class ReciboDAOImpMySQL implements IReciboDAO {
     private String updateSt;
     private String selectAllSt;
 
-    public ReciboDAOImpMySQL() {
+    public ReciboDAO() {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO recibos (IDVenta, FechaRecibo, IDCliente, NombreCliente, CUITCliente, `DineroRecibido(Texto)`, `DineroRecibido(Numero)`, FechadePago, NroFactura, MetodoPagoPrimario, MontodePagoPrimario, MetodoPagoSecundario, MontoPagoSecundario, MontoFinal) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM recibos WHERE ID = ?;";
@@ -184,7 +184,7 @@ public class ReciboDAOImpMySQL implements IReciboDAO {
     }
 
     @Override
-    public boolean deleteRecibo(int idRecibo) {
+    public boolean deleteRecibo(int idRecibo) throws SQLException, ClassNotFoundException, IOException {
         try {
             Recibo recibo = getRecibo(idRecibo);
             if (recibo != null) {
