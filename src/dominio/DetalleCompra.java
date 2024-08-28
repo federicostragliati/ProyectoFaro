@@ -1,5 +1,7 @@
 package dominio;
 
+import dominio.enums.Unidad;
+
 import java.math.BigDecimal;
 
 public class DetalleCompra {
@@ -8,28 +10,30 @@ public class DetalleCompra {
     private int idCompra;
     private int idProducto;
     private String detalle;
+    private Unidad unidad;
     private BigDecimal cantidad;
     private BigDecimal costoUnitario;
-
     private BigDecimal costoPorCantidad;
 
     public DetalleCompra() {
     }
 
-    public DetalleCompra(int idCompra, int idProducto, String detalle, BigDecimal cantidad, BigDecimal costoUnitario, BigDecimal costoPorCantidad) {
+    public DetalleCompra(int idCompra, int idProducto, String detalle, Unidad unidad, BigDecimal cantidad, BigDecimal costoUnitario, BigDecimal costoPorCantidad) {
         this.idCompra = idCompra;
         this.idProducto = idProducto;
         this.detalle = detalle;
+        this.unidad = unidad;
         this.cantidad = cantidad;
         this.costoUnitario = costoUnitario;
         this.costoPorCantidad = costoPorCantidad;
     }
 
-    public DetalleCompra(int id, int idCompra, int idProducto, String detalle, BigDecimal cantidad, BigDecimal costoUnitario, BigDecimal costoPorCantidad) {
+    public DetalleCompra(int id, int idCompra, int idProducto, String detalle, Unidad unidad, BigDecimal cantidad, BigDecimal costoUnitario, BigDecimal costoPorCantidad) {
         this.id = id;
         this.idCompra = idCompra;
         this.idProducto = idProducto;
         this.detalle = detalle;
+        this.unidad = unidad;
         this.cantidad = cantidad;
         this.costoUnitario = costoUnitario;
         this.costoPorCantidad = costoPorCantidad;
@@ -67,6 +71,14 @@ public class DetalleCompra {
         this.detalle = detalle;
     }
 
+    public Unidad getUnidad() {
+        return unidad;
+    }
+
+    public void setUnidad(Unidad unidad) {
+        this.unidad = unidad;
+    }
+
     public BigDecimal getCantidad() {
         return cantidad;
     }
@@ -90,5 +102,4 @@ public class DetalleCompra {
     public void setCostoPorCantidad(BigDecimal costoPorCantidad) {
         this.costoPorCantidad = costoPorCantidad;
     }
-
 }

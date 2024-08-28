@@ -2,6 +2,7 @@ package dao.implementaciones;
 
 import dao.interfaces.IDetalleCompraDAO;
 import dominio.DetalleCompra;
+import dominio.enums.Unidad;
 import shared.ConnectionSQL;
 
 import java.io.IOException;
@@ -22,9 +23,9 @@ public class DetalleCompraDAO implements IDetalleCompraDAO {
 
     public DetalleCompraDAO() {
         sql = new ConnectionSQL();
-        addSt = "INSERT INTO detallecompra (IDCompra, IDProducto, DetalleProducto, Cantidad, CostoUnitario, CostoPorCantidad) VALUES (?,?,?,?,?,?);";
+        addSt = "INSERT INTO detallecompra (IDCompra, IDProducto, DetalleProducto, , Unidad, Cantidad, CostoUnitario, CostoPorCantidad) VALUES (?,?,?,?,?,?,?);";
         getSt = "SELECT * FROM detallecompra WHERE ID = ?;";
-        updateSt = "UPDATE detallecompra SET IDCompra = ?, IDProducto = ?, DetalleProducto = ?, Cantidad = ?, CostoUnitario = ?, CostoPorCantidad = ? WHERE ID = ?;";
+        updateSt = "UPDATE detallecompra SET IDCompra = ?, IDProducto = ?, DetalleProducto = ?, Unidad = ?, Cantidad = ?, CostoUnitario = ?, CostoPorCantidad = ? WHERE ID = ?;";
         selectAllSt = "SELECT * FROM detallecompra;";
     }
 
@@ -38,9 +39,10 @@ public class DetalleCompraDAO implements IDetalleCompraDAO {
             st.setInt(1, d.getIdCompra());
             st.setInt(2, d.getIdProducto());
             st.setString(3, d.getDetalle());
-            st.setBigDecimal(4, d.getCantidad());
-            st.setBigDecimal(5, d.getCostoUnitario());
-            st.setBigDecimal(6, d.getCostoPorCantidad());
+            st.setString(4, d.getUnidad().toString());
+            st.setBigDecimal(5, d.getCantidad());
+            st.setBigDecimal(6, d.getCostoUnitario());
+            st.setBigDecimal(7, d.getCostoPorCantidad());
             st.executeUpdate();
             System.out.println("Detalle de compra agregado exitosamente");
         } catch (SQLException e) {
@@ -70,6 +72,7 @@ public class DetalleCompraDAO implements IDetalleCompraDAO {
                         resultSet.getInt("IDCompra"),
                         resultSet.getInt("IDProducto"),
                         resultSet.getString("DetalleProducto"),
+                        Unidad.valueOf(resultSet.getString("UnidadVenta")),
                         resultSet.getBigDecimal("Cantidad"),
                         resultSet.getBigDecimal("CostoUnitario"),
                         resultSet.getBigDecimal("CostoPorCantidad"));
@@ -104,6 +107,7 @@ public class DetalleCompraDAO implements IDetalleCompraDAO {
                         rs.getInt("IDCompra"),
                         rs.getInt("IDProducto"),
                         rs.getString("DetalleProducto"),
+                        Unidad.valueOf(rs.getString("Unidad")),
                         rs.getBigDecimal("Cantidad"),
                         rs.getBigDecimal("CostoUnitario"),
                         rs.getBigDecimal("CostoPorCantidad")));
@@ -133,10 +137,11 @@ public class DetalleCompraDAO implements IDetalleCompraDAO {
             st.setInt(1, d.getIdCompra());
             st.setInt(2, d.getIdProducto());
             st.setString(3, d.getDetalle());
-            st.setBigDecimal(4, d.getCantidad());
-            st.setBigDecimal(5, d.getCostoUnitario());
-            st.setBigDecimal(6, d.getCostoPorCantidad());
-            st.setInt(7, d.getId());
+            st.setString(4,d.getUnidad().toString());
+            st.setBigDecimal(5, d.getCantidad());
+            st.setBigDecimal(6, d.getCostoUnitario());
+            st.setBigDecimal(7, d.getCostoPorCantidad());
+            st.setInt(8, d.getId());
             st.executeUpdate();
             System.out.println("Detalle de compra actualizado exitosamente");
         } catch (SQLException e) {

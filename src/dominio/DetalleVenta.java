@@ -1,5 +1,7 @@
 package dominio;
 
+import dominio.enums.Unidad;
+
 import java.math.BigDecimal;
 
 public class DetalleVenta {
@@ -8,6 +10,7 @@ public class DetalleVenta {
     private int idVenta;
     private int idProducto;
     private String detalle;
+    private Unidad unidad;
     private BigDecimal cantidad;
     private BigDecimal precioUnitario;
     private BigDecimal precioPorCantidad;
@@ -15,20 +18,22 @@ public class DetalleVenta {
     public DetalleVenta() {
     }
 
-    public DetalleVenta(int idVenta, int idProducto, String detalle, BigDecimal cantidad, BigDecimal precioUnitario, BigDecimal precioPorCantidad) {
+    public DetalleVenta(int idVenta, int idProducto, String detalle, Unidad unidad, BigDecimal cantidad, BigDecimal precioUnitario, BigDecimal precioPorCantidad) {
         this.idVenta = idVenta;
         this.idProducto = idProducto;
         this.detalle = detalle;
+        this.unidad = unidad;
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
         this.precioPorCantidad = precioPorCantidad;
     }
 
-    public DetalleVenta(int id, int idVenta, int idProducto, String detalle, BigDecimal cantidad, BigDecimal precioUnitario, BigDecimal precioPorCantidad) {
+    public DetalleVenta(int id, int idVenta, int idProducto, String detalle, Unidad unidad, BigDecimal cantidad, BigDecimal precioUnitario, BigDecimal precioPorCantidad) {
         this.id = id;
         this.idVenta = idVenta;
         this.idProducto = idProducto;
         this.detalle = detalle;
+        this.unidad = unidad;
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
         this.precioPorCantidad = precioPorCantidad;
@@ -66,6 +71,14 @@ public class DetalleVenta {
         this.detalle = detalle;
     }
 
+    public Unidad getUnidad() {
+        return unidad;
+    }
+
+    public void setUnidad(Unidad unidad) {
+        this.unidad = unidad;
+    }
+
     public BigDecimal getCantidad() {
         return cantidad;
     }
@@ -89,5 +102,4 @@ public class DetalleVenta {
     public void setPrecioPorCantidad(BigDecimal precioPorCantidad) {
         this.precioPorCantidad = precioPorCantidad;
     }
-
 }

@@ -2,6 +2,7 @@ package dao.implementaciones;
 
 import dao.interfaces.IDetalleVentaDAO;
 import dominio.DetalleVenta;
+import dominio.enums.Unidad;
 import shared.ConnectionSQL;
 
 import java.io.IOException;
@@ -22,9 +23,9 @@ public class DetalleVentaDAO implements IDetalleVentaDAO {
 
     public DetalleVentaDAO() {
         sql = new ConnectionSQL();
-        addSt = "INSERT INTO detalleventa (IDVenta, IDProducto, DetalleProducto, Cantidad, PrecioUnitario, PrecioPorCantidad) VALUES (?, ?, ?, ?, ?, ?);";
+        addSt = "INSERT INTO detalleventa (IDVenta, IDProducto, DetalleProducto, Unidad, Cantidad, PrecioUnitario, PrecioPorCantidad) VALUES (?, ?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM detalleventa WHERE ID = ?;";
-        updateSt = "UPDATE detalleventa SET IDVenta = ?, IDProducto = ?, DetalleProducto = ?, Cantidad = ?, PrecioUnitario = ?, PrecioPorCantidad = ? WHERE ID = ?;";
+        updateSt = "UPDATE detalleventa SET IDVenta = ?, IDProducto = ?, DetalleProducto = ?, Unidad = ?, Cantidad = ?, PrecioUnitario = ?, PrecioPorCantidad = ? WHERE ID = ?;";
         selectAllSt = "SELECT * FROM detalleventa;";
     }
 
@@ -38,6 +39,7 @@ public class DetalleVentaDAO implements IDetalleVentaDAO {
             st.setInt(1, dv.getIdVenta());
             st.setInt(2, dv.getIdProducto());
             st.setString(3, dv.getDetalle());
+            st.setString(4, dv.getUnidad().toString());
             st.setBigDecimal(4, dv.getCantidad());
             st.setBigDecimal(5, dv.getPrecioUnitario());
             st.setBigDecimal(6, dv.getPrecioPorCantidad());
@@ -70,6 +72,7 @@ public class DetalleVentaDAO implements IDetalleVentaDAO {
                         resultSet.getInt("IDVenta"),
                         resultSet.getInt("IDProducto"),
                         resultSet.getString("DetalleProducto"),
+                        Unidad.valueOf(resultSet.getString("Unidad")),
                         resultSet.getBigDecimal("Cantidad"),
                         resultSet.getBigDecimal("PrecioUnitario"),
                         resultSet.getBigDecimal("PrecioPorCantidad"));
@@ -104,6 +107,7 @@ public class DetalleVentaDAO implements IDetalleVentaDAO {
                         rs.getInt("IDVenta"),
                         rs.getInt("IDProducto"),
                         rs.getString("DetalleProducto"),
+                        Unidad.valueOf(rs.getString("Unidad")),
                         rs.getBigDecimal("Cantidad"),
                         rs.getBigDecimal("PrecioUnitario"),
                         rs.getBigDecimal("PrecioPorCantidad")));
@@ -132,10 +136,11 @@ public class DetalleVentaDAO implements IDetalleVentaDAO {
             st.setInt(1, dv.getIdVenta());
             st.setInt(2, dv.getIdProducto());
             st.setString(3, dv.getDetalle());
-            st.setBigDecimal(4, dv.getCantidad());
-            st.setBigDecimal(5, dv.getPrecioUnitario());
-            st.setBigDecimal(6, dv.getPrecioPorCantidad());
-            st.setInt(7, dv.getId());
+            st.setString(4, dv.getUnidad().toString());
+            st.setBigDecimal(5, dv.getCantidad());
+            st.setBigDecimal(6, dv.getPrecioUnitario());
+            st.setBigDecimal(7, dv.getPrecioPorCantidad());
+            st.setInt(8, dv.getId());
             st.executeUpdate();
             System.out.println("Detalle de venta actualizado exitosamente");
         } catch (SQLException e) {
