@@ -20,13 +20,15 @@ public class VentaDAO implements IVentaDAO {
     private String getSt;
     private String updateSt;
     private String selectAllSt;
+    private String selectLast;
 
     public VentaDAO() {
         sql = new ConnectionSQL();
-        addSt = "INSERT INTO ventas (ID Cliente, CUIT Cliente, Fecha Venta, Metodo de Pago Primario, Monto de Pago Primario, Metodo de Pago Secundario, Monto de Pago Secundario, Monto Final, Pagado, Completa, Entregada, Activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-        getSt = "SELECT * FROM ventas WHERE `ID Venta` = ?;";
-        updateSt = "UPDATE ventas SET `ID Cliente` = ?, `CUIT Cliente` = ?, `Fecha Venta` = ?, `Metodo de Pago Primario` = ?, `Monto de Pago Primario` = ?, `Metodo de Pago Secundario` = ?, `Monto de Pago Secundario` = ?, `Monto Final` = ?, `Pagado` = ?, `Completa` = ?, `Entregada` = ?, `Activo` = ? WHERE `ID Venta` = ?;";
+        addSt = "INSERT INTO ventas (IDCliente, CUITCliente, FechaVenta, Descuentos , MetodoPagoPrimario, MontoPagoPrimario, MetodoPagoSecundario, MontoPagoSecundario, MontoFinal, Pagado, Completa, Entregada, Activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        getSt = "SELECT * FROM ventas WHERE `ID` = ?;";
+        updateSt = "UPDATE ventas SET `IDCliente` = ?, `CUITCliente` = ?, `FechaVenta` = ?, Descuentos = ?,`MetodoPagoPrimario` = ?, `MontoPagoPrimario` = ?, `MetodoPagoSecundario` = ?, `MontoPagoSecundario` = ?, `MontoFinal` = ?, `Pagado` = ?, `Completa` = ?, `Entregada` = ?, `Activo` = ? WHERE `ID Venta` = ?;";
         selectAllSt = "SELECT * FROM ventas;";
+        selectLast = "SELECT * FROM ventas WHERE ID = (SELECT MAX(ID) FROM ventas);";
     }
 
     @Override
@@ -38,16 +40,17 @@ public class VentaDAO implements IVentaDAO {
             st = con.prepareStatement(addSt);
             st.setInt(1, v.getIdCliente());
             st.setString(2, v.getCuitCliente());
-            st.setDate(3, new Date(v.getFechaVenta().getTime())); // Convert java.util.Date to java.sql.Date
-            st.setInt(4, v.getMetodoDePagoPrimario());
-            st.setBigDecimal(5, v.getMontoDePagoPrimario());
-            st.setInt(6, v.getMetodoDePagoSecundario());
-            st.setBigDecimal(7, v.getMontoDePagoSecundario());
-            st.setBigDecimal(8, v.getMontoFinal());
-            st.setBoolean(9, v.isPagada());
-            st.setBoolean(10, v.isCompleta());
-            st.setBoolean(11, v.isEntregada());
-            st.setBoolean(12, v.isActivo());
+            st.setDate(3, new Date(v.getFechaVenta().getTime()));
+            st.setInt(4, v.getDescuentos());// Convert java.util.Date to java.sql.Date
+            st.setInt(5, v.getMetodoDePagoPrimario());
+            st.setBigDecimal(6, v.getMontoDePagoPrimario());
+            st.setInt(7, v.getMetodoDePagoSecundario());
+            st.setBigDecimal(8, v.getMontoDePagoSecundario());
+            st.setBigDecimal(9, v.getMontoFinal());
+            st.setBoolean(10, v.isPagada());
+            st.setBoolean(11, v.isCompleta());
+            st.setBoolean(12, v.isEntregada());
+            st.setBoolean(13, v.isActivo());
             st.executeUpdate();
             System.out.println("Venta agregada exitosamente");
         } catch (SQLException e) {
@@ -73,18 +76,19 @@ public class VentaDAO implements IVentaDAO {
             ResultSet resultSet = st.executeQuery();
             if (resultSet.next()) {
                 return new Venta(
-                        resultSet.getInt("ID Venta"),
-                        resultSet.getInt("ID Cliente"),
-                        resultSet.getString("CUIT Cliente"),
-                        resultSet.getDate("Fecha Venta"), // java.sql.Date
-                        resultSet.getInt("Metodo de Pago Primario"),
-                        resultSet.getBigDecimal("Monto de Pago Primario"),
-                        resultSet.getInt("Metodo de Pago Secundario"),
-                        resultSet.getBigDecimal("Monto de Pago Secundario"),
+                        resultSet.getInt("IDVenta"),
+                        resultSet.getInt("IDCliente"),
+                        resultSet.getString("CUITCliente"),
+                        resultSet.getDate("FechaVenta"),
+                        resultSet.getInt("Descuentos"), // java.sql.Date
+                        resultSet.getInt("MetodoPagoPrimario"),
+                        resultSet.getBigDecimal("MontoPagoPrimario"),
+                        resultSet.getInt("MetodoPagoSecundario"),
+                        resultSet.getBigDecimal("MontoPagoSecundario"),
+                        resultSet.getBigDecimal("MontoFinal"),
                         resultSet.getBoolean("Pagado"),
                         resultSet.getBoolean("Completa"),
                         resultSet.getBoolean("Entregada"),
-                        resultSet.getBigDecimal("Monto Final"),
                         resultSet.getBoolean("Activo"));
             } else {
                 System.out.println("No se encontró ninguna venta con el ID: " + idVenta);
@@ -113,18 +117,19 @@ public class VentaDAO implements IVentaDAO {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 ventas.add(new Venta(
-                        rs.getInt("ID Venta"),
-                        rs.getInt("ID Cliente"),
-                        rs.getString("CUIT Cliente"),
-                        rs.getDate("Fecha Venta"), // java.sql.Date
-                        rs.getInt("Metodo de Pago Primario"),
-                        rs.getBigDecimal("Monto de Pago Primario"),
-                        rs.getInt("Metodo de Pago Secundario"),
-                        rs.getBigDecimal("Monto de Pago Secundario"),
+                        rs.getInt("IDVenta"),
+                        rs.getInt("IDCliente"),
+                        rs.getString("CUITCliente"),
+                        rs.getDate("FechaVenta"),
+                        rs.getInt("Descuentos"),// java.sql.Date
+                        rs.getInt("MetodoPagoPrimario"),
+                        rs.getBigDecimal("MontoPagoPrimario"),
+                        rs.getInt("MetodoPagoSecundario"),
+                        rs.getBigDecimal("MontoPagoSecundario"),
+                        rs.getBigDecimal("MontoFinal"),
                         rs.getBoolean("Pagado"),
                         rs.getBoolean("Completa"),
                         rs.getBoolean("Entregada"),
-                        rs.getBigDecimal("Monto Final"),
                         rs.getBoolean("Activo")));
             }
         } catch (SQLException e) {
@@ -192,4 +197,46 @@ public class VentaDAO implements IVentaDAO {
         }
         return false;
     }
+
+    @Override
+    public Venta getLastVenta() throws SQLException, ClassNotFoundException, IOException {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            con = sql.getConnection();
+            st = con.prepareStatement(selectLast);
+            ResultSet resultSet = st.executeQuery();
+            if (resultSet.next()) {
+                return new Venta(
+                        resultSet.getInt("ID"),
+                        resultSet.getInt("IDCliente"),
+                        resultSet.getString("CUITCliente"),
+                        resultSet.getDate("FechaVenta"),
+                        resultSet.getInt("Descuentos"),// java.sql.Date
+                        resultSet.getInt("MetodoPagoPrimario"),
+                        resultSet.getBigDecimal("MontoPagoPrimario"),
+                        resultSet.getInt("MetodoPagoSecundario"),
+                        resultSet.getBigDecimal("MontoPagoSecundario"),
+                        resultSet.getBigDecimal("MontoFinal"),
+                        resultSet.getBoolean("Pagado"),
+                        resultSet.getBoolean("Completa"),
+                        resultSet.getBoolean("Entregada"),
+                        resultSet.getBoolean("Activo"));
+            } else {
+                System.out.println("No se encontraron ventas");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (st != null) st.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+
 }

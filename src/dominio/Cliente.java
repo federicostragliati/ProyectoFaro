@@ -77,5 +77,8 @@ public class Cliente {
         this.activo = activo;
     }
 
-
+    @Override
+    public String toString() {
+        return cuitCliente + " - " + nombre;
+    }
 }

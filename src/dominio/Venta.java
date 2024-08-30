@@ -9,23 +9,25 @@ public class Venta {
     private int IdCliente;
     private String CuitCliente;
     private Date fechaVenta;
+    private int descuentos;
     private int metodoDePagoPrimario;
     private BigDecimal montoDePagoPrimario;
     private int metodoDePagoSecundario;
     private BigDecimal montoDePagoSecundario;
+    private BigDecimal montoFinal;
     private boolean pagada;
     private boolean completa;
     private boolean entregada;
-    private BigDecimal montoFinal;
     private boolean activo;
 
     public Venta() {
     }
 
-    public Venta(int idCliente, String cuitCliente, Date fechaVenta, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, boolean pagada, boolean completa, boolean entregada, BigDecimal montoFinal, boolean activo) {
+    public Venta(int idCliente, String cuitCliente, Date fechaVenta, int descuentos, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean completa, boolean entregada, boolean activo) {
         IdCliente = idCliente;
         CuitCliente = cuitCliente;
         this.fechaVenta = fechaVenta;
+        this.descuentos = descuentos;
         this.metodoDePagoPrimario = metodoDePagoPrimario;
         this.montoDePagoPrimario = montoDePagoPrimario;
         this.metodoDePagoSecundario = metodoDePagoSecundario;
@@ -37,11 +39,12 @@ public class Venta {
         this.activo = activo;
     }
 
-    public Venta(int id, int idCliente, String cuitCliente, Date fechaVenta, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, boolean pagada, boolean completa, boolean entregada, BigDecimal montoFinal, boolean activo) {
+    public Venta(int id, int idCliente, String cuitCliente, Date fechaVenta, int descuentos, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean completa, boolean entregada, boolean activo) {
         this.id = id;
         IdCliente = idCliente;
         CuitCliente = cuitCliente;
         this.fechaVenta = fechaVenta;
+        this.descuentos = descuentos;
         this.metodoDePagoPrimario = metodoDePagoPrimario;
         this.montoDePagoPrimario = montoDePagoPrimario;
         this.metodoDePagoSecundario = metodoDePagoSecundario;
@@ -83,6 +86,14 @@ public class Venta {
 
     public void setFechaVenta(Date fechaVenta) {
         this.fechaVenta = fechaVenta;
+    }
+
+    public int getDescuentos() {
+        return descuentos;
+    }
+
+    public void setDescuentos(int descuentos) {
+        this.descuentos = descuentos;
     }
 
     public int getMetodoDePagoPrimario() {

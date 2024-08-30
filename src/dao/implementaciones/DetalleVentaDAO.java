@@ -23,7 +23,7 @@ public class DetalleVentaDAO implements IDetalleVentaDAO {
 
     public DetalleVentaDAO() {
         sql = new ConnectionSQL();
-        addSt = "INSERT INTO detalleventa (IDVenta, IDProducto, DetalleProducto, Unidad, Cantidad, PrecioUnitario, PrecioPorCantidad) VALUES (?, ?, ?, ?, ?, ?);";
+        addSt = "INSERT INTO detalleventa (IDVenta, IDProducto, DetalleProducto, Unidad, Cantidad, PrecioUnitario, PrecioPorCantidad) VALUES (?, ?, ?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM detalleventa WHERE ID = ?;";
         updateSt = "UPDATE detalleventa SET IDVenta = ?, IDProducto = ?, DetalleProducto = ?, Unidad = ?, Cantidad = ?, PrecioUnitario = ?, PrecioPorCantidad = ? WHERE ID = ?;";
         selectAllSt = "SELECT * FROM detalleventa;";
@@ -40,9 +40,9 @@ public class DetalleVentaDAO implements IDetalleVentaDAO {
             st.setInt(2, dv.getIdProducto());
             st.setString(3, dv.getDetalle());
             st.setString(4, dv.getUnidad().toString());
-            st.setBigDecimal(4, dv.getCantidad());
-            st.setBigDecimal(5, dv.getPrecioUnitario());
-            st.setBigDecimal(6, dv.getPrecioPorCantidad());
+            st.setBigDecimal(5, dv.getCantidad());
+            st.setBigDecimal(6, dv.getPrecioUnitario());
+            st.setBigDecimal(7, dv.getPrecioPorCantidad());
             st.executeUpdate();
             System.out.println("Detalle de venta agregado exitosamente");
         } catch (SQLException e) {
