@@ -76,7 +76,7 @@ public class VentaDAO implements IVentaDAO {
             ResultSet resultSet = st.executeQuery();
             if (resultSet.next()) {
                 return new Venta(
-                        resultSet.getInt("IDVenta"),
+                        resultSet.getInt("ID"),
                         resultSet.getInt("IDCliente"),
                         resultSet.getString("CUITCliente"),
                         resultSet.getDate("FechaVenta"),
