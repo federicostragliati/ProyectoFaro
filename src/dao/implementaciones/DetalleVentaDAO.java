@@ -24,7 +24,7 @@ public class DetalleVentaDAO implements IDetalleVentaDAO {
     public DetalleVentaDAO() {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO detalleventa (IDVenta, IDProducto, DetalleProducto, Unidad, Cantidad, PrecioUnitario, PrecioPorCantidad) VALUES (?, ?, ?, ?, ?, ?, ?);";
-        getSt = "SELECT * FROM detalleventa WHERE ID = ?;";
+        getSt = "SELECT * FROM detalleventa WHERE IDVenta = ?;";
         updateSt = "UPDATE detalleventa SET IDVenta = ?, IDProducto = ?, DetalleProducto = ?, Unidad = ?, Cantidad = ?, PrecioUnitario = ?, PrecioPorCantidad = ? WHERE ID = ?;";
         selectAllSt = "SELECT * FROM detalleventa;";
     }

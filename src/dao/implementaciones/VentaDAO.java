@@ -26,7 +26,7 @@ public class VentaDAO implements IVentaDAO {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO ventas (IDCliente, CUITCliente, FechaVenta, Descuentos , MetodoPagoPrimario, MontoPagoPrimario, MetodoPagoSecundario, MontoPagoSecundario, MontoFinal, Pagado, Completa, Entregada, Activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM ventas WHERE `ID` = ?;";
-        updateSt = "UPDATE ventas SET `IDCliente` = ?, `CUITCliente` = ?, `FechaVenta` = ?, Descuentos = ?,`MetodoPagoPrimario` = ?, `MontoPagoPrimario` = ?, `MetodoPagoSecundario` = ?, `MontoPagoSecundario` = ?, `MontoFinal` = ?, `Pagado` = ?, `Completa` = ?, `Entregada` = ?, `Activo` = ? WHERE `ID Venta` = ?;";
+        updateSt = "UPDATE ventas SET `IDCliente` = ?, `CUITCliente` = ?, `FechaVenta` = ?, Descuentos = ?,`MetodoPagoPrimario` = ?, `MontoPagoPrimario` = ?, `MetodoPagoSecundario` = ?, `MontoPagoSecundario` = ?, `MontoFinal` = ?, `Pagado` = ?, `Completa` = ?, `Entregada` = ?, `Activo` = ? WHERE `ID` = ?;";
         selectAllSt = "SELECT * FROM ventas;";
         selectLast = "SELECT * FROM ventas WHERE ID = (SELECT MAX(ID) FROM ventas);";
     }
@@ -117,11 +117,11 @@ public class VentaDAO implements IVentaDAO {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 ventas.add(new Venta(
-                        rs.getInt("IDVenta"),
+                        rs.getInt("ID"),
                         rs.getInt("IDCliente"),
                         rs.getString("CUITCliente"),
-                        rs.getDate("FechaVenta"),
-                        rs.getInt("Descuentos"),// java.sql.Date
+                        rs.getDate("FechaVenta"),// java.sql.Date
+                        rs.getInt("Descuentos"),
                         rs.getInt("MetodoPagoPrimario"),
                         rs.getBigDecimal("MontoPagoPrimario"),
                         rs.getInt("MetodoPagoSecundario"),
@@ -155,17 +155,18 @@ public class VentaDAO implements IVentaDAO {
             st = con.prepareStatement(updateSt);
             st.setInt(1, v.getIdCliente());
             st.setString(2, v.getCuitCliente());
-            st.setDate(3, new Date(v.getFechaVenta().getTime())); // Convert java.util.Date to java.sql.Date
-            st.setInt(4, v.getMetodoDePagoPrimario());
-            st.setBigDecimal(5, v.getMontoDePagoPrimario());
-            st.setInt(6, v.getMetodoDePagoSecundario());
-            st.setBigDecimal(7, v.getMontoDePagoSecundario());
-            st.setBigDecimal(8, v.getMontoFinal());
-            st.setBoolean(9, v.isPagada());
-            st.setBoolean(10, v.isCompleta());
-            st.setBoolean(11, v.isEntregada());
-            st.setBoolean(12, v.isActivo());
-            st.setInt(13, v.getId());
+            st.setDate(3, new Date(v.getFechaVenta().getTime()));// Convert java.util.Date to java.sql.Date
+            st.setInt(4,v.getDescuentos());
+            st.setInt(5, v.getMetodoDePagoPrimario());
+            st.setBigDecimal(6, v.getMontoDePagoPrimario());
+            st.setInt(7, v.getMetodoDePagoSecundario());
+            st.setBigDecimal(8, v.getMontoDePagoSecundario());
+            st.setBigDecimal(9, v.getMontoFinal());
+            st.setBoolean(10, v.isPagada());
+            st.setBoolean(11, v.isCompleta());
+            st.setBoolean(12, v.isEntregada());
+            st.setBoolean(13, v.isActivo());
+            st.setInt(14, v.getId());
             st.executeUpdate();
             System.out.println("Venta actualizada exitosamente");
         } catch (SQLException e) {
