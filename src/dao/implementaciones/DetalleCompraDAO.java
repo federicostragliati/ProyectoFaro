@@ -23,7 +23,7 @@ public class DetalleCompraDAO implements IDetalleCompraDAO {
 
     public DetalleCompraDAO() {
         sql = new ConnectionSQL();
-        addSt = "INSERT INTO detallecompra (IDCompra, IDProducto, DetalleProducto, , Unidad, Cantidad, CostoUnitario, CostoPorCantidad) VALUES (?,?,?,?,?,?,?);";
+        addSt = "INSERT INTO detallecompra (IDCompra, IDProducto, DetalleProducto, Unidad, Cantidad, CostoUnitario, CostoPorCantidad) VALUES (?,?,?,?,?,?,?);";
         getSt = "SELECT * FROM detallecompra WHERE ID = ?;";
         updateSt = "UPDATE detallecompra SET IDCompra = ?, IDProducto = ?, DetalleProducto = ?, Unidad = ?, Cantidad = ?, CostoUnitario = ?, CostoPorCantidad = ? WHERE ID = ?;";
         selectAllSt = "SELECT * FROM detallecompra;";

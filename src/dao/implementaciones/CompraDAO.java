@@ -2,6 +2,7 @@ package dao.implementaciones;
 
 import dao.interfaces.ICompraDAO;
 import dominio.Compra;
+import dominio.Venta;
 import shared.ConnectionSQL;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class CompraDAO implements ICompraDAO {
     private String getSt;
     private String updateSt;
     private String selectAllSt;
+    private String selectLast;
 
     public CompraDAO() {
         sql = new ConnectionSQL();
@@ -27,6 +29,7 @@ public class CompraDAO implements ICompraDAO {
         getSt = "SELECT * FROM compras WHERE ID = ?;";
         updateSt = "UPDATE compras SET IDProveedor = ?, CUITProveedor = ?, FechaCompra = ?, MetodoPagoPrimario = ?, MontoPagoPrimario = ?, MetodoPagoSecundario = ?, MontoPagoSecundario = ?, MontoFinal = ?, Pagado = ?, Entregado = ?, Activo = ? WHERE ID = ?;";
         selectAllSt = "SELECT * FROM compras;";
+        selectLast = "SELECT * FROM compras WHERE ID = (SELECT MAX(ID) FROM compras);";
     }
 
     @Override
@@ -187,5 +190,43 @@ public class CompraDAO implements ICompraDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public Compra getLastCompra() throws SQLException, ClassNotFoundException, IOException {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            con = sql.getConnection();
+            st = con.prepareStatement(selectLast);
+            ResultSet resultSet = st.executeQuery();
+            if (resultSet.next()) {
+                return new Compra(
+                        resultSet.getInt("ID"),
+                        resultSet.getInt("IDProveedor"),
+                        resultSet.getString("CUITProveedor"),
+                        resultSet.getDate("FechaCompra"),
+                        resultSet.getInt("MetodoPagoPrimario"),
+                        resultSet.getBigDecimal("MontoPagoPrimario"),
+                        resultSet.getInt("MetodoPagoSecundario"),
+                        resultSet.getBigDecimal("MontoPagoSecundario"),
+                        resultSet.getBigDecimal("MontoFinal"),
+                        resultSet.getBoolean("Pagado"),
+                        resultSet.getBoolean("Entregado"),
+                        resultSet.getBoolean("Activo"));
+            } else {
+                System.out.println("No se encontraron compras");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (st != null) st.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 }
