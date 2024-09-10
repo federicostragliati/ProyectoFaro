@@ -16,14 +16,13 @@ public class Venta {
     private BigDecimal montoDePagoSecundario;
     private BigDecimal montoFinal;
     private boolean pagada;
-    private boolean completa;
     private boolean entregada;
     private boolean activo;
 
     public Venta() {
     }
 
-    public Venta(int idCliente, String cuitCliente, Date fechaVenta, int descuentos, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean completa, boolean entregada, boolean activo) {
+    public Venta(int idCliente, String cuitCliente, Date fechaVenta, int descuentos, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean entregada, boolean activo) {
         IdCliente = idCliente;
         CuitCliente = cuitCliente;
         this.fechaVenta = fechaVenta;
@@ -33,13 +32,12 @@ public class Venta {
         this.metodoDePagoSecundario = metodoDePagoSecundario;
         this.montoDePagoSecundario = montoDePagoSecundario;
         this.pagada = pagada;
-        this.completa = completa;
         this.entregada = entregada;
         this.montoFinal = montoFinal;
         this.activo = activo;
     }
 
-    public Venta(int id, int idCliente, String cuitCliente, Date fechaVenta, int descuentos, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean completa, boolean entregada, boolean activo) {
+    public Venta(int id, int idCliente, String cuitCliente, Date fechaVenta, int descuentos, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal, boolean pagada, boolean entregada, boolean activo) {
         this.id = id;
         IdCliente = idCliente;
         CuitCliente = cuitCliente;
@@ -50,7 +48,6 @@ public class Venta {
         this.metodoDePagoSecundario = metodoDePagoSecundario;
         this.montoDePagoSecundario = montoDePagoSecundario;
         this.pagada = pagada;
-        this.completa = completa;
         this.entregada = entregada;
         this.montoFinal = montoFinal;
         this.activo = activo;
@@ -134,14 +131,6 @@ public class Venta {
 
     public void setPagada(boolean pagada) {
         this.pagada = pagada;
-    }
-
-    public boolean isCompleta() {
-        return completa;
-    }
-
-    public void setCompleta(boolean completa) {
-        this.completa = completa;
     }
 
     public boolean isEntregada() {

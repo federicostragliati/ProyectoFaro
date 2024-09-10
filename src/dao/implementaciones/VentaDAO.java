@@ -24,9 +24,9 @@ public class VentaDAO implements IVentaDAO {
 
     public VentaDAO() {
         sql = new ConnectionSQL();
-        addSt = "INSERT INTO ventas (IDCliente, CUITCliente, FechaVenta, Descuentos , MetodoPagoPrimario, MontoPagoPrimario, MetodoPagoSecundario, MontoPagoSecundario, MontoFinal, Pagado, Completa, Entregada, Activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        addSt = "INSERT INTO ventas (IDCliente, CUITCliente, FechaVenta, Descuentos , MetodoPagoPrimario, MontoPagoPrimario, MetodoPagoSecundario, MontoPagoSecundario, MontoFinal, Pagado, Entregada, Activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM ventas WHERE `ID` = ?;";
-        updateSt = "UPDATE ventas SET `IDCliente` = ?, `CUITCliente` = ?, `FechaVenta` = ?, Descuentos = ?,`MetodoPagoPrimario` = ?, `MontoPagoPrimario` = ?, `MetodoPagoSecundario` = ?, `MontoPagoSecundario` = ?, `MontoFinal` = ?, `Pagado` = ?, `Completa` = ?, `Entregada` = ?, `Activo` = ? WHERE `ID` = ?;";
+        updateSt = "UPDATE ventas SET `IDCliente` = ?, `CUITCliente` = ?, `FechaVenta` = ?, Descuentos = ?,`MetodoPagoPrimario` = ?, `MontoPagoPrimario` = ?, `MetodoPagoSecundario` = ?, `MontoPagoSecundario` = ?, `MontoFinal` = ?, `Pagado` = ?, `Entregada` = ?, `Activo` = ? WHERE `ID` = ?;";
         selectAllSt = "SELECT * FROM ventas;";
         selectLast = "SELECT * FROM ventas WHERE ID = (SELECT MAX(ID) FROM ventas);";
     }
@@ -48,9 +48,8 @@ public class VentaDAO implements IVentaDAO {
             st.setBigDecimal(8, v.getMontoDePagoSecundario());
             st.setBigDecimal(9, v.getMontoFinal());
             st.setBoolean(10, v.isPagada());
-            st.setBoolean(11, v.isCompleta());
-            st.setBoolean(12, v.isEntregada());
-            st.setBoolean(13, v.isActivo());
+            st.setBoolean(11, v.isEntregada());
+            st.setBoolean(12, v.isActivo());
             st.executeUpdate();
             System.out.println("Venta agregada exitosamente");
         } catch (SQLException e) {
@@ -87,7 +86,6 @@ public class VentaDAO implements IVentaDAO {
                         resultSet.getBigDecimal("MontoPagoSecundario"),
                         resultSet.getBigDecimal("MontoFinal"),
                         resultSet.getBoolean("Pagado"),
-                        resultSet.getBoolean("Completa"),
                         resultSet.getBoolean("Entregada"),
                         resultSet.getBoolean("Activo"));
             } else {
@@ -128,7 +126,6 @@ public class VentaDAO implements IVentaDAO {
                         rs.getBigDecimal("MontoPagoSecundario"),
                         rs.getBigDecimal("MontoFinal"),
                         rs.getBoolean("Pagado"),
-                        rs.getBoolean("Completa"),
                         rs.getBoolean("Entregada"),
                         rs.getBoolean("Activo")));
             }
@@ -163,10 +160,9 @@ public class VentaDAO implements IVentaDAO {
             st.setBigDecimal(8, v.getMontoDePagoSecundario());
             st.setBigDecimal(9, v.getMontoFinal());
             st.setBoolean(10, v.isPagada());
-            st.setBoolean(11, v.isCompleta());
-            st.setBoolean(12, v.isEntregada());
-            st.setBoolean(13, v.isActivo());
-            st.setInt(14, v.getId());
+            st.setBoolean(11, v.isEntregada());
+            st.setBoolean(12, v.isActivo());
+            st.setInt(13, v.getId());
             st.executeUpdate();
             System.out.println("Venta actualizada exitosamente");
         } catch (SQLException e) {
@@ -220,7 +216,6 @@ public class VentaDAO implements IVentaDAO {
                         resultSet.getBigDecimal("MontoPagoSecundario"),
                         resultSet.getBigDecimal("MontoFinal"),
                         resultSet.getBoolean("Pagado"),
-                        resultSet.getBoolean("Completa"),
                         resultSet.getBoolean("Entregada"),
                         resultSet.getBoolean("Activo"));
             } else {
