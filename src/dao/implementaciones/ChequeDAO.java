@@ -46,7 +46,7 @@ public class ChequeDAO implements IChequeDAO {
             st.setBigDecimal(7, c.getImporte());
             st.setDate(8, new Date(c.getFechaCheque().getTime()));
             st.setDate(9, new Date(c.getFechaCobro().getTime()));
-            st.setString(10, c.getDestino().name());
+            st.setString(10, c.getDestino().toString());
             st.setString(11, c.getCuitDestino());
             st.setBoolean(12, c.isEstado());
             st.setBoolean(13, c.isActivo());
