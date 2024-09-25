@@ -25,7 +25,9 @@ public class CompraDAO implements ICompraDAO {
 
     public CompraDAO() {
         sql = new ConnectionSQL();
-        addSt = "INSERT INTO compras (IDProveedor, CUITProveedor, FechaCompra, MetodoPagoPrimario, MontoPagoPrimario, MetodoPagoSecundario, MontoPagoSecundario, MontoFinal, Pagado, Entregado, Activo) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+        addSt ="INSERT INTO id_generator () VALUES ();" +
+               "SET @new_id = LAST_INSERT_ID();" +
+               "INSERT INTO compras (ID, IDProveedor, CUITProveedor, FechaCompra, MetodoPagoPrimario, MontoPagoPrimario, MetodoPagoSecundario, MontoPagoSecundario, MontoFinal, Pagado, Entregado, Activo) VALUES (@new_id,?,?,?,?,?,?,?,?,?,?,?);";
         getSt = "SELECT * FROM compras WHERE ID = ?;";
         updateSt = "UPDATE compras SET IDProveedor = ?, CUITProveedor = ?, FechaCompra = ?, MetodoPagoPrimario = ?, MontoPagoPrimario = ?, MetodoPagoSecundario = ?, MontoPagoSecundario = ?, MontoFinal = ?, Pagado = ?, Entregado = ?, Activo = ? WHERE ID = ?;";
         selectAllSt = "SELECT * FROM compras;";

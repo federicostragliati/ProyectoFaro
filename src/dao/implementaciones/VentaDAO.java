@@ -24,7 +24,9 @@ public class VentaDAO implements IVentaDAO {
 
     public VentaDAO() {
         sql = new ConnectionSQL();
-        addSt = "INSERT INTO ventas (IDCliente, CUITCliente, FechaVenta, Descuentos , MetodoPagoPrimario, MontoPagoPrimario, MetodoPagoSecundario, MontoPagoSecundario, MontoFinal, Pagado, Entregada, Activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        addSt = "INSERT INTO id_generator () VALUES ();" +
+                "SET @new_id = LAST_INSERT_ID();" +
+                "INSERT INTO ventas (ID, IDCliente, CUITCliente, FechaVenta, Descuentos , MetodoPagoPrimario, MontoPagoPrimario, MetodoPagoSecundario, MontoPagoSecundario, MontoFinal, Pagado, Entregada, Activo) VALUES (@new_id,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM ventas WHERE `ID` = ?;";
         updateSt = "UPDATE ventas SET `IDCliente` = ?, `CUITCliente` = ?, `FechaVenta` = ?, Descuentos = ?,`MetodoPagoPrimario` = ?, `MontoPagoPrimario` = ?, `MetodoPagoSecundario` = ?, `MontoPagoSecundario` = ?, `MontoFinal` = ?, `Pagado` = ?, `Entregada` = ?, `Activo` = ? WHERE `ID` = ?;";
         selectAllSt = "SELECT * FROM ventas;";
