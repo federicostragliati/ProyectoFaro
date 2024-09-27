@@ -16,5 +16,11 @@ public class Main {
 
         System.out.printf("Test");
 
+        ReportesDAO reportesDAO = new ReportesDAO();
+        //reportesDAO.getReporteStock();
+        //reportesDAO.getListaDePrecios();
+        //reportesDAO.getHistoricoDePrecios(4);
+        reportesDAO.getHistoricoDeStock(4);
+
     }
 }

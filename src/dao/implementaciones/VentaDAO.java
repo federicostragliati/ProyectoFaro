@@ -81,7 +81,7 @@ public class VentaDAO implements IVentaDAO {
                         resultSet.getInt("IDCliente"),
                         resultSet.getString("CUITCliente"),
                         resultSet.getDate("FechaVenta"),
-                        resultSet.getInt("Descuentos"), // java.sql.Date
+                        resultSet.getInt("Descuentos"),
                         resultSet.getInt("MetodoPagoPrimario"),
                         resultSet.getBigDecimal("MontoPagoPrimario"),
                         resultSet.getInt("MetodoPagoSecundario"),
