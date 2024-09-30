@@ -38,6 +38,8 @@ public class ReportesDAO {
     private String historicoDePreciosCompra;
     private String historicoDePreciosVenta;
     private String chequesAVencer;
+    private String ventas;
+    private String compras;
 
     public ReportesDAO() {
 
@@ -65,6 +67,47 @@ public class ReportesDAO {
         this.historicoDePreciosVenta = "SELECT dv.IDProducto, dv.DetalleProducto, dv.Unidad, dv.PrecioUnitario, v.FechaVenta FROM detalleventa dv JOIN ventas v ON dv.IDVenta = v.ID WHERE dv.IDProducto = ? ORDER BY v.FechaVenta DESC LIMIT 5;";
         //Consulta Cheques
         this.chequesAVencer = "SELECT * FROM cheques WHERE FechaCobro <= CURDATE() + INTERVAL 15 DAY;";
+        //Consulta Ventas y Compras
+        this.ventas = "SELECT \n" +
+                "  v.ID AS IDVenta, \n" +
+                "  v.FechaVenta, \n" +
+                "  c.Nombre AS NombreCliente, \n" +
+                "  c.CUIT AS CUITCliente, \n" +
+                "  v.MetodoPagoPrimario, \n" +
+                "  mp1.Nombre AS NombreMetodoPrimario, \n" +
+                "  v.MontoPagoPrimario, \n" +
+                "  v.MetodoPagoSecundario, \n" +
+                "  mp2.Nombre AS NombreMetodoSecundario, \n" +
+                "  v.MontoPagoSecundario, \n" +
+                "  v.MontoFinal, \n" +
+                "  v.Pagado, \n" +
+                "  v.Entregada \n" +
+                "FROM ventas v\n" +
+                "LEFT JOIN metodosdepago mp1 ON v.MetodoPagoPrimario = mp1.ID\n" +
+                "LEFT JOIN metodosdepago mp2 ON v.MetodoPagoSecundario = mp2.ID\n" +
+                "LEFT JOIN clientes c ON v.IDCliente = c.ID\n" +
+                "WHERE v.Activo = 1 \n" +
+                "AND v.FechaVenta BETWEEN ? AND ?;";
+        this.compras = "SELECT \n" +
+                "  c.ID AS IDCompra, \n" +
+                "  c.FechaCompra, \n" +
+                "  p.RazonSocial AS NombreProveedor, \n" +
+                "  p.CUIT AS CUITProveedor, \n" +
+                "  c.MetodoPagoPrimario, \n" +
+                "  mp1.Nombre AS NombreMetodoPrimario, \n" +
+                "  c.MontoPagoPrimario, \n" +
+                "  c.MetodoPagoSecundario, \n" +
+                "  mp2.Nombre AS NombreMetodoSecundario, \n" +
+                "  c.MontoPagoSecundario, \n" +
+                "  c.MontoFinal, \n" +
+                "  c.Pagado, \n" +
+                "  c.Entregado \n" +
+                "FROM compras c\n" +
+                "LEFT JOIN metodosdepago mp1 ON c.MetodoPagoPrimario = mp1.ID\n" +
+                "LEFT JOIN metodosdepago mp2 ON c.MetodoPagoSecundario = mp2.ID\n" +
+                "LEFT JOIN proveedores p ON c.IDProveedor = p.ID\n" +
+                "WHERE c.Activo = 1 \n" +
+                "AND c.FechaCompra BETWEEN ? AND ?;\n";
 
 
     }
@@ -564,6 +607,62 @@ public class ReportesDAO {
         } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    //Reporte Ventas y Compras
+    public void getVentas(Date fechaInicial, Date fechaFinal) {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+
+            Date date  = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy - HHmm");
+            String dateFormateada = dateFormat.format(date);
+
+            downloadsPath = userHome + "/Downloads/" + "ReporteVentasFinanzas " + dateFormateada + ".xlsx";
+
+            con = c.getConnection();
+            st = con.prepareStatement(ventas);
+            st.setDate(1, new java.sql.Date(fechaInicial.getTime()));
+            st.setDate(2, new java.sql.Date(fechaFinal.getTime()));
+
+            ResultSet resultSet = st.executeQuery();
+
+            createReport(downloadsPath, resultSet);
+
+        } catch (SQLException | IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+    public void getCompras(Date fechaInicial, Date fechaFinal) {
+        Connection con = null;
+        PreparedStatement st = null;
+
+        try {
+
+            Date date  = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy - HHmm");
+            String dateFormateada = dateFormat.format(date);
+
+            downloadsPath = userHome + "/Downloads/" + "ReporteComprasFinanzas " + dateFormateada + ".xlsx";
+
+            con = c.getConnection();
+            st = con.prepareStatement(compras);
+            st.setDate(1, new java.sql.Date(fechaInicial.getTime()));
+            st.setDate(2, new java.sql.Date(fechaFinal.getTime()));
+
+            ResultSet resultSet = st.executeQuery();
+
+            createReport(downloadsPath, resultSet);
+
+        } catch (SQLException | IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
