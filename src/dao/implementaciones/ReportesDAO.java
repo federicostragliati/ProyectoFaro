@@ -610,7 +610,7 @@ public class ReportesDAO {
 
     }
 
-    //Reporte Ventas y Compras
+    //Reporte Movimientos
     public void getVentas(Date fechaInicial, Date fechaFinal) {
         Connection con = null;
         PreparedStatement st = null;
@@ -638,6 +638,7 @@ public class ReportesDAO {
 
 
     }
+
     public void getCompras(Date fechaInicial, Date fechaFinal) {
         Connection con = null;
         PreparedStatement st = null;
@@ -662,7 +663,6 @@ public class ReportesDAO {
         } catch (SQLException | IOException e) {
             throw new RuntimeException(e);
         }
-
 
     }
 
