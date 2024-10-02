@@ -46,27 +46,27 @@ public class ReportesDAO {
         this.userHome = System.getProperty("user.home");
         c = new ConnectionSQL();
         //Consultas Stock
-        this.reporteStock = "SELECT ID, Detalle, Cantidad, UnidadVenta FROM productos WHERE Activo = true;";
+        this.reporteStock = "SELECT ID, Detalle, Cantidad, UnidadVenta FROM productos WHERE Activo = 1;";
         this.stockProductoUnico = "SELECT ID, Detalle, UnidadVenta, Cantidad FROM productos WHERE ID = ?;";
         this.stockHistoricoVentas = "SELECT dv.IDProducto, dv.DetalleProducto, dv.Unidad, dv.Cantidad, v.FechaVenta FROM detalleventa dv JOIN ventas v ON dv.IDVenta = v.ID WHERE dv.IDProducto = ? ORDER BY v.FechaVenta DESC LIMIT 10;";
         this.stockHistoricoCompras ="SELECT dc.IDProducto, dc.DetalleProducto, dc.Unidad, dc.Cantidad, c.FechaCompra FROM detallecompra dc JOIN compras c ON dc.IDCompra = c.ID WHERE dc.IDProducto = ? ORDER BY c.FechaCompra DESC LIMIT 10;";
         //Consultas Ventas
-        this.ventasEntreFechas = "SELECT * FROM ventas WHERE FechaVenta BETWEEN ? AND ?;";
-        this.ventasPorCerrar = "Select * from ventas where (Pagado = 1 AND Entregada = 0) OR (Pagado = 0 AND Entregada = 1);";
-        this.ventasPorCerrarPorCliente = "SELECT * FROM ventas WHERE ((Pagado = 1 AND Entregada = 0) OR (Pagado = 0 AND Entregada = 1)) AND IDCliente = ?;";
-        this.ventasEntreFechasPorCliente = "SELECT * FROM ventas WHERE FechaVenta BETWEEN ? AND ? AND IDCliente = ? ;";
+        this.ventasEntreFechas = "SELECT * FROM ventas WHERE FechaVenta BETWEEN ? AND ? AND Activo = 1;";
+        this.ventasPorCerrar = "Select * from ventas where (Pagado = 1 AND Entregada = 0) OR (Pagado = 0 AND Entregada = 1) AND Activo = 1;";
+        this.ventasPorCerrarPorCliente = "SELECT * FROM ventas WHERE ((Pagado = 1 AND Entregada = 0) OR (Pagado = 0 AND Entregada = 1)) AND IDCliente = ? AND Activo = 1;";
+        this.ventasEntreFechasPorCliente = "SELECT * FROM ventas WHERE FechaVenta BETWEEN ? AND ? AND IDCliente = ? AND Activo = 1;";
         //Consultas Compras
-        this.comprasEntreFechas = "SELECT * FROM compras WHERE FechaCompra BETWEEN ? AND ?;";
-        this.comprasPorCerrar = "Select * from compras where (Pagado = 1 AND Entregada = 0) OR (Pagado = 0 AND Entregada = 1);";
-        this.comprasPorCerrarPorProveedor = "SELECT * FROM compras WHERE ((Pagado = 1 AND Entregada = 0) OR (Pagado = 0 AND Entregada = 1)) AND IDProveedor = ?;";
-        this.comprasEntreFechasPorProveedor = "SELECT * FROM ventas WHERE FechaCompra BETWEEN ? AND ? AND IDProveedor = ? ;";
+        this.comprasEntreFechas = "SELECT * FROM compras WHERE FechaCompra BETWEEN ? AND ? AND Activo = 1;";
+        this.comprasPorCerrar = "Select * from compras where (Pagado = 1 AND Entregada = 0) OR (Pagado = 0 AND Entregada = 1) AND Activo = 1;";
+        this.comprasPorCerrarPorProveedor = "SELECT * FROM compras WHERE ((Pagado = 1 AND Entregada = 0) OR (Pagado = 0 AND Entregada = 1)) AND IDProveedor = ? AND Activo = 1;";
+        this.comprasEntreFechasPorProveedor = "SELECT * FROM ventas WHERE FechaCompra BETWEEN ? AND ? AND IDProveedor = ? AND Activo = 1;";
         //Consultas Lista de Precios
         this.listaDePrecios = "SELECT ID, Detalle, PrecioUnitario, UnidadVenta FROM productos WHERE Activo = true;";
         this.precioProductoUnico = "SELECT ID, Detalle, UnidadVenta, PrecioUnitario FROM productos WHERE ID = ?;";
         this.historicoDePreciosCompra = "SELECT dc.IDProducto, dc.DetalleProducto, dc.Unidad, dc.CostoUnitario, c.FechaCompra FROM detallecompra dc JOIN compras c ON dc.IDCompra = c.ID WHERE dc.IDProducto = ? ORDER BY c.FechaCompra DESC LIMIT 5;\n";
         this.historicoDePreciosVenta = "SELECT dv.IDProducto, dv.DetalleProducto, dv.Unidad, dv.PrecioUnitario, v.FechaVenta FROM detalleventa dv JOIN ventas v ON dv.IDVenta = v.ID WHERE dv.IDProducto = ? ORDER BY v.FechaVenta DESC LIMIT 5;";
         //Consulta Cheques
-        this.chequesAVencer = "SELECT * FROM cheques WHERE FechaCobro <= CURDATE() + INTERVAL 15 DAY;";
+        this.chequesAVencer = "SELECT * FROM cheques WHERE FechaCobro BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 15 DAY) AND Estado = 0 AND Activo = 1;";
         //Consulta Ventas y Compras
         this.ventas = "SELECT \n" +
                 "  v.ID AS IDVenta, \n" +
