@@ -2,7 +2,11 @@ package dao.implementaciones;
 
 import dao.interfaces.IRemitoDAO;
 import dominio.Remito;
+import net.sf.jasperreports.engine.*;
 import shared.ConnectionSQL;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,7 +15,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RemitoDAO implements IRemitoDAO {
 
@@ -25,7 +31,7 @@ public class RemitoDAO implements IRemitoDAO {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO remitos (Linea, IDVenta, FechaEntrega, IDCliente, NombreCliente, CUITCliente, Factura, IDProducto, Cantidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM remitos WHERE ID = ?;";
-        updateSt = "UPDATE remitos SET Linea = ?, IDVenta = ?, FechaEntrega = ?, IDCliente = ?, NombreCliente = ?, CUITCliente = ?, Factura = ?, IDProducto = ?, Cantidad = ? WHERE ID = ?;";
+        updateSt = "UPDATE remitos SET FechaEntrega = current_date() WHERE IDVenta = ?;";
         selectAllSt = "SELECT * FROM remitos;";
     }
 
@@ -135,22 +141,13 @@ public class RemitoDAO implements IRemitoDAO {
     }
 
     @Override
-    public void updateRemito(Remito r) throws SQLException, ClassNotFoundException, IOException {
+    public void updateRemito(int id) throws SQLException, ClassNotFoundException, IOException {
         Connection con = null;
         PreparedStatement st = null;
         try {
             con = sql.getConnection();
             st = con.prepareStatement(updateSt);
-            st.setInt(1, r.getLinea());
-            st.setInt(2, r.getIdVenta());
-            st.setDate(3, new Date(r.getFechaEntrega().getTime()));
-            st.setInt(4, r.getIdCliente());
-            st.setString(5, r.getNombreCliente());
-            st.setString(6, r.getCuitCliente());
-            st.setString(7, r.getNroFactura());
-            st.setInt(8, r.getIdProducto());
-            st.setBigDecimal(9, r.getCantidadProducto());
-            st.setInt(10, r.getId());
+            st.setInt(1, id);
             st.executeUpdate();
             System.out.println("Remito actualizado exitosamente");
         } catch (SQLException e) {
@@ -181,4 +178,33 @@ public class RemitoDAO implements IRemitoDAO {
         }
         return false;
     }
+
+    public void generarRemito(int id) {
+        try {
+            String userHome = System.getProperty("user.home");
+            String downloadsPath = userHome + "/Downloads/RemitoNro" + id + ".pdf";
+
+            // Compilar el informe
+            JasperReport jasperReport = JasperCompileManager.compileReport("resources/RemitoFaro.jrxml");
+
+            // Parámetros
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("IDVenta", id);
+
+            // Llenar el informe
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, sql.getConnection());
+
+            // Exportar a PDF usando JasperReports
+            JRPdfExporter exporter = new JRPdfExporter();
+            exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+            exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(downloadsPath));
+
+            exporter.exportReport(); // Exportar
+
+        } catch (JRException e) {
+            e.printStackTrace(); // Cambié a e.printStackTrace() para más detalles
+        }
+    }
+
+
 }

@@ -2,6 +2,10 @@ package dao.implementaciones;
 
 import dao.interfaces.IReciboDAO;
 import dominio.Recibo;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import shared.ConnectionSQL;
 
 import java.io.IOException;
@@ -11,7 +15,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ReciboDAO implements IReciboDAO {
 
@@ -198,5 +204,32 @@ public class ReciboDAO implements IReciboDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void generarRecibo(int id) {
+        try {
+            String userHome = System.getProperty("user.home");
+            String downloadsPath = userHome + "/Downloads/ReciboNro" + id + ".pdf";
+
+            // Compilar el informe
+            JasperReport jasperReport = JasperCompileManager.compileReport("resources/ReciboFaro.jrxml");
+
+            // Parámetros
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("IDVenta", id);
+
+            // Llenar el informe
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, sql.getConnection());
+
+            // Exportar a PDF usando JasperReports
+            JRPdfExporter exporter = new JRPdfExporter();
+            exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+            exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(downloadsPath));
+
+            exporter.exportReport(); // Exportar
+
+        } catch (JRException e) {
+            e.printStackTrace(); // Cambié a e.printStackTrace() para más detalles
+        }
     }
 }
