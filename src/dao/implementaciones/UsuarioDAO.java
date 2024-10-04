@@ -20,13 +20,15 @@ public class UsuarioDAO implements IUsuarioDAO {
     private String getSt;
     private String updateSt;
     private String selectAllSt;
+    private String auntenticar;
 
     public UsuarioDAO() {
         sql = new ConnectionSQL();
-        addSt = "INSERT INTO usuarios (`Nombre de Usuario`, Nombre, Contraseña, `Tipo de Usuario`, Activo) VALUES (?, ?, ?, ?, ?);";
+        addSt = "INSERT INTO usuarios (NombreUsuario, Nombre, Contraseña, TipoUsuario, Activo) VALUES (?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM usuarios WHERE idUsuarios = ?;";
-        updateSt = "UPDATE usuarios SET `Nombre de Usuario` = ?, Nombre = ?, Contraseña = ?, `Tipo de Usuario` = ?, Activo = ? WHERE idUsuarios = ?;";
+        updateSt = "UPDATE usuarios SET NombreUsuario = ?, Nombre = ?, Contraseña = ?, TipoUsuario = ?, Activo = ? WHERE idUsuarios = ?;";
         selectAllSt = "SELECT * FROM usuarios;";
+        auntenticar = "SELECT * FROM usuarios WHERE NombreUsuario = ? AND Contraseña = ? AND Activo = 1;";
     }
 
     @Override
@@ -67,10 +69,10 @@ public class UsuarioDAO implements IUsuarioDAO {
             if (resultSet.next()) {
                 return new Usuario(
                         resultSet.getInt("idUsuarios"),
-                        resultSet.getString("Nombre de Usuario"),
+                        resultSet.getString("NombreUsuario"),
                         resultSet.getString("Nombre"),
                         resultSet.getString("Contraseña"),
-                        TipoUsuario.valueOf(resultSet.getString("Tipo de Usuario")),
+                        TipoUsuario.valueOf(resultSet.getString("TipoUsuario")),
                         resultSet.getBoolean("Activo"));
             } else {
                 System.out.println("No se encontró ningún usuario con el ID: " + idUsuario);
@@ -100,10 +102,10 @@ public class UsuarioDAO implements IUsuarioDAO {
             while (rs.next()) {
                 usuarios.add(new Usuario(
                         rs.getInt("idUsuarios"),
-                        rs.getString("Nombre de Usuario"),
+                        rs.getString("NombreUsuario"),
                         rs.getString("Nombre"),
                         rs.getString("Contraseña"),
-                        TipoUsuario.valueOf(rs.getString("Tipo de Usuario")),
+                        TipoUsuario.valueOf(rs.getString("TipoUsuario")),
                         rs.getBoolean("Activo")));
             }
         } catch (SQLException e) {
@@ -163,5 +165,38 @@ public class UsuarioDAO implements IUsuarioDAO {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public Usuario autenticarUsuario(String usuario, String password) {
+        Connection con = null;
+        PreparedStatement st = null;
+        try {
+            con = sql.getConnection();
+            st = con.prepareStatement(auntenticar);
+            st.setString(1, usuario);
+            st.setString(2, password);
+            ResultSet resultSet = st.executeQuery();
+            if (resultSet.next()) {
+                return new Usuario(
+                        resultSet.getInt("idUsuarios"),
+                        resultSet.getString("NombreUsuario"),
+                        resultSet.getString("Nombre"),
+                        resultSet.getString("Contraseña"),
+                        TipoUsuario.valueOf(resultSet.getString("TipoUsuario")),
+                        resultSet.getBoolean("Activo"));
+            } else {
+                System.out.println("No se encontró ningún usuario " + usuario);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (st != null) st.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 }
