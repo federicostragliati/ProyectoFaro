@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IReciboDAO {
-    public void createRecibo(Recibo r) throws SQLException, ClassNotFoundException, IOException; //prepare statement
-    public Recibo getRecibo(int idRecibo) throws SQLException, ClassNotFoundException, IOException; //prepare statement
-    public List<Recibo> getRecibos() throws SQLException, ClassNotFoundException, IOException; //statement
-    public void updateRecibo (Recibo r) throws SQLException, ClassNotFoundException, IOException; //prepare statement
-    public boolean deleteRecibo(int idRecibo) throws SQLException, ClassNotFoundException, IOException; //prepare statement
+    void createRecibo(Recibo r) throws SQLException, ClassNotFoundException, IOException; //prepare statement
+    Recibo getRecibo(int idRecibo) throws SQLException, ClassNotFoundException, IOException; //prepare statement
+    List<Recibo> getRecibos() throws SQLException, ClassNotFoundException, IOException; //statement
+    void updateRecibo (int id, String factura) throws SQLException, ClassNotFoundException, IOException; //prepare statement
+    boolean deleteRecibo(int idRecibo) throws SQLException, ClassNotFoundException, IOException; //prepare statement
 
 }

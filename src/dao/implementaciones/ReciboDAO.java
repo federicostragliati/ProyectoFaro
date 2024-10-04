@@ -31,7 +31,7 @@ public class ReciboDAO implements IReciboDAO {
         sql = new ConnectionSQL();
         addSt = "INSERT INTO recibos (IDVenta, FechaRecibo, IDCliente, NombreCliente, CUITCliente, `DineroRecibido(Texto)`, `DineroRecibido(Numero)`, FechadePago, NroFactura, MetodoPagoPrimario, MontodePagoPrimario, MetodoPagoSecundario, MontoPagoSecundario, MontoFinal) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM recibos WHERE ID = ?;";
-        updateSt = "UPDATE recibos SET IDVenta = ?, FechaRecibo = ?, IDCliente = ?, NombreCliente = ?, CUITCliente = ?, `DineroRecibido(Texto)` = ?, `DineroRecibido(Numero)` = ?, FechadePago = ?, NroFactura = ?, MetodoPagoPrimario = ?, MontodePagoPrimario = ?, MetodoPagoSecundario = ?, MontoPagoSecundario = ?, MontoFinal = ? WHERE ID = ?;";
+        updateSt = "UPDATE recibos SET FechaRecibo = current_date(), NroFactura = ? WHERE IDVenta = ?;";
         selectAllSt = "SELECT * FROM recibos;";
     }
 
@@ -154,27 +154,14 @@ public class ReciboDAO implements IReciboDAO {
     }
 
     @Override
-    public void updateRecibo(Recibo r) throws SQLException, ClassNotFoundException, IOException {
+    public void updateRecibo(int id, String factura) throws SQLException, ClassNotFoundException, IOException {
         Connection con = null;
         PreparedStatement st = null;
         try {
             con = sql.getConnection();
             st = con.prepareStatement(updateSt);
-            st.setInt(1, r.getIdVenta());
-            st.setDate(2, new Date(r.getFechaRecibo().getTime()));
-            st.setInt(3, r.getIdCliente());
-            st.setString(4, r.getNombreCliente());
-            st.setString(5, r.getCuitCliente());
-            st.setString(6, r.getTextoDineroRecibido());
-            st.setBigDecimal(7, r.getNroDineroRecibido());
-            st.setDate(8, new Date(r.getFechaPago().getTime()));
-            st.setString(9, r.getFactura());
-            st.setInt(10, r.getMetodoDePagoPrimario());
-            st.setBigDecimal(11, r.getMontoDePagoPrimario());
-            st.setInt(12, r.getMetodoDePagoSecundario());
-            st.setBigDecimal(13, r.getMontoDePagoSecundario());
-            st.setBigDecimal(14, r.getMontoFinal());
-            st.setInt(15, r.getId());
+            st.setString(1, factura);
+            st.setInt(2, id);
             st.executeUpdate();
             System.out.println("Recibo actualizado exitosamente");
         } catch (SQLException e) {
