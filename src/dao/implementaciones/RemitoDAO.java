@@ -8,7 +8,9 @@ import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -184,8 +186,15 @@ public class RemitoDAO implements IRemitoDAO {
             String userHome = System.getProperty("user.home");
             String downloadsPath = userHome + "/Downloads/RemitoNro" + id + ".pdf";
 
+            // Cargar el archivo .jrxml desde el classpath
+            InputStream reportStream = getClass().getClassLoader().getResourceAsStream("RemitoFaro.jrxml");
+
+            if (reportStream == null) {
+                throw new FileNotFoundException("El archivo RemitoFaro.jrxml no se encuentra en el classpath");
+            }
+
             // Compilar el informe
-            JasperReport jasperReport = JasperCompileManager.compileReport("resources/RemitoFaro.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportStream);
 
             // Parámetros
             Map<String, Object> parametros = new HashMap<>();
@@ -201,8 +210,8 @@ public class RemitoDAO implements IRemitoDAO {
 
             exporter.exportReport(); // Exportar
 
-        } catch (JRException e) {
-            e.printStackTrace(); // Cambié a e.printStackTrace() para más detalles
+        } catch (JRException | IOException e) {
+            e.printStackTrace(); // Muestra detalles del error
         }
     }
 

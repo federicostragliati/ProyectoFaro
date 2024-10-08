@@ -8,7 +8,9 @@ import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import shared.ConnectionSQL;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -198,8 +200,15 @@ public class ReciboDAO implements IReciboDAO {
             String userHome = System.getProperty("user.home");
             String downloadsPath = userHome + "/Downloads/ReciboNro" + id + ".pdf";
 
+            // Cargar el archivo .jrxml desde el classpath
+            InputStream reportStream = getClass().getClassLoader().getResourceAsStream("ReciboFaro.jrxml");
+
+            if (reportStream == null) {
+                throw new FileNotFoundException("El archivo ReciboFaro.jrxml no se encuentra en el classpath");
+            }
+
             // Compilar el informe
-            JasperReport jasperReport = JasperCompileManager.compileReport("resources/ReciboFaro.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportStream);
 
             // Parámetros
             Map<String, Object> parametros = new HashMap<>();
@@ -215,8 +224,9 @@ public class ReciboDAO implements IReciboDAO {
 
             exporter.exportReport(); // Exportar
 
-        } catch (JRException e) {
-            e.printStackTrace(); // Cambié a e.printStackTrace() para más detalles
+        } catch (JRException | IOException e) {
+            e.printStackTrace(); // Muestra detalles del error
         }
     }
+
 }
