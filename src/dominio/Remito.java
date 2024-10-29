@@ -14,28 +14,24 @@ public class Remito {
     private int idCliente;
     private String nombreCliente;
     private String cuitCliente;
-    private String nroFactura;
-    private int idProducto;
     private String detalleProducto;
     private BigDecimal cantidadProducto;
 
     public Remito() {
     }
 
-    public Remito(int linea, int idVenta, Date fechaEntrega, int idCliente, String nombreCliente, String cuitCliente, String nroFactura, int idProducto, String detalleProducto, BigDecimal cantidadProducto) {
+    public Remito(int linea, int idVenta, Date fechaEntrega, int idCliente, String nombreCliente, String cuitCliente, String detalleProducto, BigDecimal cantidadProducto) {
         this.linea = linea;
         this.idVenta = idVenta;
         this.fechaEntrega = fechaEntrega;
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
         this.cuitCliente = cuitCliente;
-        this.nroFactura = nroFactura;
-        this.idProducto = idProducto;
         this.detalleProducto = detalleProducto;
         this.cantidadProducto = cantidadProducto;
     }
 
-    public Remito(int id, int linea, int idVenta, Date fechaEntrega, int idCliente, String nombreCliente, String cuitCliente, String nroFactura, int idProducto, String detalleProducto, BigDecimal cantidadProducto) {
+    public Remito(int id, int linea, int idVenta, Date fechaEntrega, int idCliente, String nombreCliente, String cuitCliente, String detalleProducto, BigDecimal cantidadProducto) {
         this.id = id;
         this.linea = linea;
         this.idVenta = idVenta;
@@ -43,8 +39,6 @@ public class Remito {
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
         this.cuitCliente = cuitCliente;
-        this.nroFactura = nroFactura;
-        this.idProducto = idProducto;
         this.detalleProducto = detalleProducto;
         this.cantidadProducto = cantidadProducto;
     }
@@ -103,22 +97,6 @@ public class Remito {
 
     public void setCuitCliente(String cuitCliente) {
         this.cuitCliente = cuitCliente;
-    }
-
-    public String getNroFactura() {
-        return nroFactura;
-    }
-
-    public void setNroFactura(String nroFactura) {
-        this.nroFactura = nroFactura;
-    }
-
-    public int getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
     }
 
     public String getDetalleProducto() {

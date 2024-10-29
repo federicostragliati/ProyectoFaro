@@ -32,7 +32,7 @@ public class RemitoDAO implements IRemitoDAO {
 
     public RemitoDAO() {
         sql = new ConnectionSQL();
-        addSt = "INSERT INTO remitos (Linea, IDVenta, FechaEntrega, IDCliente, NombreCliente, CUITCliente, Factura, IDProducto, Cantidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        addSt = "INSERT INTO remitos (Linea, IDVenta, FechaEntrega, IDCliente, NombreCliente, CUITCliente, DetalleProducto, Cantidad) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         getSt = "SELECT * FROM remitos WHERE ID = ?;";
         updateSt = "UPDATE remitos SET FechaEntrega = current_date() WHERE IDVenta = ?;";
         selectAllSt = "SELECT * FROM remitos;";
@@ -51,9 +51,8 @@ public class RemitoDAO implements IRemitoDAO {
             st.setInt(4, r.getIdCliente());
             st.setString(5, r.getNombreCliente());
             st.setString(6, r.getCuitCliente());
-            st.setString(7, r.getNroFactura());
-            st.setInt(8, r.getIdProducto());
-            st.setBigDecimal(9, r.getCantidadProducto());
+            st.setString(7, r.getDetalleProducto());
+            st.setBigDecimal(8, r.getCantidadProducto());
             st.executeUpdate();
             System.out.println("Remito agregado exitosamente");
         } catch (SQLException e) {
@@ -86,8 +85,6 @@ public class RemitoDAO implements IRemitoDAO {
                         resultSet.getInt("IDCliente"),
                         resultSet.getString("NombreCliente"),
                         resultSet.getString("CUITCliente"),
-                        resultSet.getString("Factura"),
-                        resultSet.getInt("IDProducto"),
                         resultSet.getString("DetalleProducto"),
                         resultSet.getBigDecimal("Cantidad"));
             } else {
@@ -124,8 +121,6 @@ public class RemitoDAO implements IRemitoDAO {
                         rs.getInt("IDCliente"),
                         rs.getString("NombreCliente"),
                         rs.getString("CUITCliente"),
-                        rs.getString("Factura"),
-                        rs.getInt("IDProducto"),
                         rs.getString("DetalleProducto"),
                         rs.getBigDecimal("Cantidad")));
             }

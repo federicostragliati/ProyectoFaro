@@ -11,9 +11,6 @@ public class Recibo {
     private int idCliente;
     private String nombreCliente;
     private String cuitCliente;
-    private String textoDineroRecibido;
-    private BigDecimal nroDineroRecibido;
-    private Date fechaPago;
     private String factura;
     private int metodoDePagoPrimario;
     private BigDecimal montoDePagoPrimario;
@@ -24,15 +21,12 @@ public class Recibo {
     public Recibo() {
     }
 
-    public Recibo(int idVenta, Date fechaRecibo, int idCliente, String nombreCliente, String cuitCliente, String textoDineroRecibido, BigDecimal nroDineroRecibido, Date fechaPago, String factura, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal) {
+    public Recibo(int idVenta, Date fechaRecibo, int idCliente, String nombreCliente, String cuitCliente,String factura, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal) {
         this.idVenta = idVenta;
         this.fechaRecibo = fechaRecibo;
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
         this.cuitCliente = cuitCliente;
-        this.textoDineroRecibido = textoDineroRecibido;
-        this.nroDineroRecibido = nroDineroRecibido;
-        this.fechaPago = fechaPago;
         this.factura = factura;
         this.metodoDePagoPrimario = metodoDePagoPrimario;
         this.montoDePagoPrimario = montoDePagoPrimario;
@@ -41,16 +35,13 @@ public class Recibo {
         this.montoFinal = montoFinal;
     }
 
-    public Recibo(int id, int idVenta, Date fechaRecibo, int idCliente, String nombreCliente, String cuitCliente, String textoDineroRecibido, BigDecimal nroDineroRecibido, Date fechaPago, String factura, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal) {
+    public Recibo(int id, int idVenta, Date fechaRecibo, int idCliente, String nombreCliente, String cuitCliente, String factura, int metodoDePagoPrimario, BigDecimal montoDePagoPrimario, int metodoDePagoSecundario, BigDecimal montoDePagoSecundario, BigDecimal montoFinal) {
         this.id = id;
         this.idVenta = idVenta;
         this.fechaRecibo = fechaRecibo;
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
         this.cuitCliente = cuitCliente;
-        this.textoDineroRecibido = textoDineroRecibido;
-        this.nroDineroRecibido = nroDineroRecibido;
-        this.fechaPago = fechaPago;
         this.factura = factura;
         this.metodoDePagoPrimario = metodoDePagoPrimario;
         this.montoDePagoPrimario = montoDePagoPrimario;
@@ -105,30 +96,6 @@ public class Recibo {
 
     public void setCuitCliente(String cuitCliente) {
         this.cuitCliente = cuitCliente;
-    }
-
-    public String getTextoDineroRecibido() {
-        return textoDineroRecibido;
-    }
-
-    public void setTextoDineroRecibido(String textoDineroRecibido) {
-        this.textoDineroRecibido = textoDineroRecibido;
-    }
-
-    public BigDecimal getNroDineroRecibido() {
-        return nroDineroRecibido;
-    }
-
-    public void setNroDineroRecibido(BigDecimal nroDineroRecibido) {
-        this.nroDineroRecibido = nroDineroRecibido;
-    }
-
-    public Date getFechaPago() {
-        return fechaPago;
-    }
-
-    public void setFechaPago(Date fechaPago) {
-        this.fechaPago = fechaPago;
     }
 
     public String getFactura() {

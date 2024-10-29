@@ -72,10 +72,10 @@
 	<title>
 		<band height="80" splitType="Stretch">
 			<rectangle>
-				<reportElement x="-20" y="0" width="279" height="80" uuid="402836f4-f267-4877-b21d-8a29b547593a"/>
+				<reportElement x="-11" y="0" width="270" height="80" uuid="402836f4-f267-4877-b21d-8a29b547593a"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="296" y="0" width="279" height="80" uuid="4d59dc1f-7e76-4515-af60-d02898a99987"/>
+				<reportElement x="296" y="0" width="268" height="80" uuid="4d59dc1f-7e76-4515-af60-d02898a99987"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="80" y="10" width="110" height="16" uuid="22cff7bf-da3b-4da0-9b10-8ce0e389c55e"/>
@@ -172,10 +172,10 @@ INICIO ACTIV: 31/05/2005]]></text>
 	<pageHeader>
 		<band height="38" splitType="Stretch">
 			<rectangle>
-				<reportElement x="-20" y="0" width="279" height="37" uuid="548f67d1-6243-4275-96e5-bc8ec48656c5"/>
+				<reportElement x="-11" y="0" width="270" height="37" uuid="548f67d1-6243-4275-96e5-bc8ec48656c5"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="-20" y="0" width="71" height="38" uuid="1ed9139d-9a2d-4dda-96e2-91efdb83bb16"/>
+				<reportElement x="-11" y="0" width="62" height="38" uuid="1ed9139d-9a2d-4dda-96e2-91efdb83bb16"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Nombre: ]]></text>
 			</staticText>
@@ -185,7 +185,7 @@ INICIO ACTIV: 31/05/2005]]></text>
 				<textFieldExpression><![CDATA[$F{NombreCliente}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="296" y="0" width="279" height="37" uuid="cdba9203-f2e5-48fa-8a65-506220d9f904"/>
+				<reportElement x="296" y="0" width="268" height="37" uuid="cdba9203-f2e5-48fa-8a65-506220d9f904"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="296" y="0" width="71" height="37" uuid="f7e61fc0-cd1e-4864-ad0e-e75dc00d8599"/>
@@ -202,16 +202,16 @@ INICIO ACTIV: 31/05/2005]]></text>
 	<columnHeader>
 		<band height="58" splitType="Stretch">
 			<rectangle>
-				<reportElement x="-20" y="28" width="138" height="15" uuid="cb56c5e5-155d-45c0-acbb-fb4562727ef1"/>
+				<reportElement x="-11" y="28" width="129" height="15" uuid="cb56c5e5-155d-45c0-acbb-fb4562727ef1"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="130" y="29" width="443" height="15" uuid="ec0e4e42-ff3a-4864-aa9d-adfba2c0d697"/>
+				<reportElement x="130" y="29" width="434" height="15" uuid="ec0e4e42-ff3a-4864-aa9d-adfba2c0d697"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="-20" y="5" width="592" height="15" uuid="a4c968eb-4417-41dc-9124-fc429c70cc8e"/>
+				<reportElement x="-11" y="5" width="575" height="15" uuid="a4c968eb-4417-41dc-9124-fc429c70cc8e"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="-20" y="28" width="138" height="15" uuid="a78cb706-aa2c-44bf-895f-0bb103d567e5">
+				<reportElement x="-11" y="28" width="129" height="15" uuid="a78cb706-aa2c-44bf-895f-0bb103d567e5">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e1334744-527c-443a-b2fa-a5b3c0a57b7e"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -220,7 +220,7 @@ INICIO ACTIV: 31/05/2005]]></text>
 				<text><![CDATA[Método de Pago]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="130" y="28" width="443" height="16" uuid="3675cc6f-b902-4925-9bff-6e72b5e246c1">
+				<reportElement x="130" y="28" width="434" height="16" uuid="3675cc6f-b902-4925-9bff-6e72b5e246c1">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e1334744-527c-443a-b2fa-a5b3c0a57b7e"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -229,7 +229,7 @@ INICIO ACTIV: 31/05/2005]]></text>
 				<text><![CDATA[Monto]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-20" y="5" width="590" height="15" uuid="b3f77412-c102-41e4-865d-459409abb9c8"/>
+				<reportElement x="-20" y="5" width="584" height="15" uuid="b3f77412-c102-41e4-865d-459409abb9c8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[LIQUIDACIÓN]]></text>
 			</staticText>
@@ -238,25 +238,25 @@ INICIO ACTIV: 31/05/2005]]></text>
 	<detail>
 		<band height="119" splitType="Stretch">
 			<rectangle>
-				<reportElement x="130" y="0" width="443" height="30" uuid="791e380a-4cda-41dc-95fa-d16affbcd198"/>
+				<reportElement x="130" y="0" width="434" height="30" uuid="791e380a-4cda-41dc-95fa-d16affbcd198"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="-20" y="0" width="139" height="30" uuid="7a7c1541-8a7d-4937-a0c5-9c12b572fd05"/>
+				<reportElement x="-11" y="0" width="130" height="30" uuid="7a7c1541-8a7d-4937-a0c5-9c12b572fd05"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="-20" y="40" width="139" height="30" uuid="7a8d28af-da64-4e36-86ae-be0f028843ce"/>
+				<reportElement x="-11" y="40" width="130" height="30" uuid="7a8d28af-da64-4e36-86ae-be0f028843ce"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="130" y="40" width="443" height="30" uuid="04a9aa52-9f3c-4462-b3ea-d21919eb40f9"/>
+				<reportElement x="130" y="40" width="434" height="30" uuid="04a9aa52-9f3c-4462-b3ea-d21919eb40f9"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="-20" y="80" width="139" height="30" uuid="8be578f3-9c2b-4f03-a35d-c30a0e914284"/>
+				<reportElement x="-11" y="80" width="130" height="30" uuid="8be578f3-9c2b-4f03-a35d-c30a0e914284"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="130" y="80" width="443" height="30" uuid="06f3e879-4068-4472-a18c-c50e7351691d"/>
+				<reportElement x="130" y="80" width="434" height="30" uuid="06f3e879-4068-4472-a18c-c50e7351691d"/>
 			</rectangle>
 			<textField>
-				<reportElement x="-21" y="0" width="139" height="30" uuid="69ef37dd-1ecf-4bbf-a697-4795ac9e08fd">
+				<reportElement x="-11" y="0" width="129" height="30" uuid="69ef37dd-1ecf-4bbf-a697-4795ac9e08fd">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="60fd5763-9d40-445c-81da-3b830c633ebc"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -265,7 +265,7 @@ INICIO ACTIV: 31/05/2005]]></text>
 				<textFieldExpression><![CDATA[$F{DetalleMetodoPrimario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="130" y="0" width="444" height="30" uuid="08c946b5-0d30-4e0e-ae18-6a46c00c1411">
+				<reportElement x="130" y="0" width="434" height="30" uuid="08c946b5-0d30-4e0e-ae18-6a46c00c1411">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="23ccca05-dc87-401d-aa7f-0604888cf29d"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -274,7 +274,7 @@ INICIO ACTIV: 31/05/2005]]></text>
 				<textFieldExpression><![CDATA[$F{MontodePagoPrimario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="-21" y="40" width="139" height="30" uuid="4f8edc4e-6c93-4813-899f-7b2428e14931">
+				<reportElement x="-11" y="40" width="129" height="30" uuid="4f8edc4e-6c93-4813-899f-7b2428e14931">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="33abaaa4-207f-4a95-bbd9-086d195345f3"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -283,14 +283,14 @@ INICIO ACTIV: 31/05/2005]]></text>
 				<textFieldExpression><![CDATA[$F{DetalleMetodoSecundario}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="-20" y="80" width="139" height="30" uuid="9b92841d-6571-430c-acea-5df2ec2d069a"/>
+				<reportElement x="-10" y="80" width="129" height="30" uuid="9b92841d-6571-430c-acea-5df2ec2d069a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="11"/>
 				</textElement>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="130" y="80" width="444" height="30" uuid="59478ee6-b00f-4c5b-880a-25c2208056ec">
+				<reportElement x="130" y="80" width="434" height="30" uuid="59478ee6-b00f-4c5b-880a-25c2208056ec">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cc040004-2f6f-4942-974b-c0a272d5b94d"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -299,7 +299,7 @@ INICIO ACTIV: 31/05/2005]]></text>
 				<textFieldExpression><![CDATA[$F{MontoFinal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="130" y="39" width="444" height="30" uuid="5fa3d080-44e4-4ea7-bf4d-998a0e048d44">
+				<reportElement x="130" y="39" width="434" height="30" uuid="5fa3d080-44e4-4ea7-bf4d-998a0e048d44">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="82f46545-af17-4764-8e6c-3c38917d4c24"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -312,15 +312,15 @@ INICIO ACTIV: 31/05/2005]]></text>
 	<pageFooter>
 		<band height="60" splitType="Stretch">
 			<rectangle>
-				<reportElement x="-20" y="10" width="595" height="50" uuid="ec11adc6-23cb-4936-bfd1-529a0e27fb98"/>
+				<reportElement x="-10" y="10" width="574" height="50" uuid="ec11adc6-23cb-4936-bfd1-529a0e27fb98"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="310" y="10" width="264" height="30" uuid="ec76a63d-f8db-4614-b506-8be66c8ad89a"/>
+				<reportElement x="310" y="10" width="254" height="30" uuid="ec76a63d-f8db-4614-b506-8be66c8ad89a"/>
 				<textElement verticalAlignment="Bottom"/>
 				<text><![CDATA[Recibí conforme..............................................................]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="350" y="40" width="222" height="20" uuid="5e9b534d-a5d6-496c-b72c-13a514136727"/>
+				<reportElement x="350" y="40" width="214" height="20" uuid="5e9b534d-a5d6-496c-b72c-13a514136727"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="6"/>
 				</textElement>

@@ -43,7 +43,7 @@ public class VentaDAO implements IVentaDAO {
             st.setInt(1, v.getIdCliente());
             st.setString(2, v.getCuitCliente());
             st.setDate(3, new Date(v.getFechaVenta().getTime()));
-            st.setInt(4, v.getDescuentos());// Convert java.util.Date to java.sql.Date
+            st.setInt(4, v.getDescuentos());
             st.setInt(5, v.getMetodoDePagoPrimario());
             st.setBigDecimal(6, v.getMontoDePagoPrimario());
             st.setInt(7, v.getMetodoDePagoSecundario());
